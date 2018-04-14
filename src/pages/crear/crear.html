@@ -1,0 +1,41 @@
+<!--
+  Generated template for the CrearPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+
+    <ion-item>
+      <ion-label stacked>Nombre:</ion-label>
+      <ion-input  type="text" placeholder="Nombre del evento"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Descripción:</ion-label>
+      <ion-textarea type="text" (input)="adjustTextarea($event);" placeholder="Descripción del evento"></ion-textarea> 
+    </ion-item>
+    <ion-grid>
+        <ion-row>
+          <ion-col>
+              <ion-label stacked>Precio:</ion-label>
+              <ion-input  type="Number" min="0"></ion-input>
+          </ion-col>
+          <ion-col>
+            <p>descripcion uno</p>
+          </ion-col>
+        </ion-row>  
+      </ion-grid>
+      <ion-label>Date</ion-label>
+      <ion-datetime displayFormat="MMM DD, YYYY HH:mm" [(ngModel)]="myDate"></ion-datetime>
+
+      <button ion-button block type="submit">Añadir Personas</button>
+      <button ion-button block type="submit">Crear Evento</button>
+  </ion-list>
+</ion-content>
