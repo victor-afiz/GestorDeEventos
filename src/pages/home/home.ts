@@ -4,6 +4,7 @@ import { LoginPage } from '../login/login';
 import { AlertController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MenuPage } from '../menu/menu';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'page-home',
@@ -15,11 +16,12 @@ export class HomePage {
     public navCtrl: NavController,
     public formBuilder: FormBuilder,
     private alertCtrl: AlertController
+    , public http: HttpClient
   ) {
     this.myForm = this.createMyForm();
   }
-  
-  private createMyForm(){
+
+  private createMyForm() {
     return this.formBuilder.group({
       name: ['', Validators.required],
       lastName: ['', Validators.required],
@@ -30,10 +32,31 @@ export class HomePage {
       })
     });
   }
-  saveData(){
-    if(this.myForm.value.passwordRetry.password === this.myForm.value.passwordRetry.passwordConfirmation){
+  saveData() {
+    if (this.myForm.value.passwordRetry.password === this.myForm.value.passwordRetry.passwordConfirmation) {
       this.navCtrl.push(MenuPage);
-    }else{
+
+      this.http.get('http://localhost:8000/usuario/?name='+
+        this.myForm.value.name+'&lastName='+
+        this.myForm.value.lastName+'&email='+
+        this.myForm.value.lastName+'&password='+
+        this.myForm.value.passwordRetry.password)
+        .subscribe(
+          res => {
+            console.log(res);
+          },
+          err => {
+            console.log(err);
+          }
+        );
+        console.log(this.http.get('localhost:8000/usuario/'+
+        'name:'+this.myForm.value.name+
+        'lastName:'+this.myForm.value.lastName+
+        'email:'+this.myForm.value.email+
+        'password:'+this.myForm.value.passwordRetry.password
+
+      ));
+    } else {
       let alert = this.alertCtrl.create({
         title: 'Wrong password',
         subTitle: 'Please retry the login and try again',

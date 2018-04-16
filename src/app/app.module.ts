@@ -13,6 +13,8 @@ import { UnoPage } from '../pages/uno/uno';
 import { CrearPage } from '../pages/crear/crear';
 import { SalirPage } from '../pages/salir/salir';
 
+import {HttpClientModule} from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -27,7 +29,8 @@ import { SalirPage } from '../pages/salir/salir';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    HttpClientModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
