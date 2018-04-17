@@ -1,47 +1,14 @@
 <ion-header>
   <ion-navbar hideBackButton="true">
     <ion-title text-center>
-      Pantalla-Resgistro-beta
+      Registro
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 
 <ion-content padding>
-  
-  <!-- <form [formGroup]="myForm" (ngSubmit)="saveData()">
-    <ion-list>
 
-        <ion-item text-center>
-            <ion-label color="primary" floating>Name</ion-label>
-            <ion-input formControlName="name" type="text" text-center></ion-input>
-          </ion-item>
-          <ion-item text-center>
-            <ion-label color="primary" floating>Surname</ion-label>
-            <ion-input formControlName="surName" type="text" placeholder="Nombre" text-center></ion-input>
-          </ion-item>
-          <ion-item text-center>
-            <ion-label color="primary" floating>Email</ion-label>
-            <ion-input formControlName="email" type="email" text-center></ion-input>
-          </ion-item>
-          <ion-item text-center>
-            <ion-label color="primary" floating>NickName</ion-label>
-            <ion-input formControlName="nickName" type="text" text-center></ion-input>
-          </ion-item>
-          <ion-item text-center>
-            <ion-label color="primary" floating>Password</ion-label>
-            <ion-input formControlName="password" type="password"  text-center></ion-input>
-          </ion-item>
-          <div padding>
-              <button ion-button block type="submit" [disabled]="!myForm.valid">Guardar</button>
-            </div>
-          <p text-center>Si ya tienes una cuenta
-            <a (click)="send(model)">inicia sesion</a>
-          </p>
-    </ion-list>
-      
-
-  </form> -->
   <form [formGroup]="myForm" (ngSubmit)="saveData()">
       <ion-list>
         <ion-item>
@@ -73,10 +40,10 @@
         </div>
       </ion-list>
       <div padding>
-        <button ion-button block (click)="name();" type="submit" [disabled]="!myForm.valid">Guardar</button>
+        <button ion-button block type="submit" [disabled]="!myForm.valid">Guardar</button>
       </div>
       <p text-center>Si ya tienes una cuenta
-          <a (click)="send(model)">inicia sesion</a>
+          <a (click)="send()">inicia sesion</a>
         </p>
     </form>
 

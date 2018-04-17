@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
+import { HttpClient } from '@angular/common/http';
 /**
  * Generated class for the LoginPage page.
  *
@@ -18,7 +20,8 @@ export class LoginPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public formBuilder: FormBuilder
+    public formBuilder: FormBuilder,
+    public http: HttpClient
     ){
       this.myForm = this.createMyForm();
   }
@@ -32,8 +35,17 @@ export class LoginPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
   }
-  saveData(){
-    console.log(this.myForm.value);
+  find(){
+      this.http.get('http://localhost:8000/usuario/?email='+this.myForm.value.email+'&password='+
+          this.myForm.value.passwordRetry.password)
+          .subscribe(
+              res => {
+                  console.log(res);
+              },
+              err => {
+                  console.log(err);
+              }
+          );
   }
 
 }
