@@ -1,7 +1,7 @@
-<ion-header>
+<ion-header >
   <ion-navbar hideBackButton="true">
     <ion-title text-center>
-      Registro
+      <p>Registro</p>
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -12,12 +12,12 @@
   <form [formGroup]="myForm" (ngSubmit)="saveData()">
       <ion-list>
         <ion-item>
-          <ion-icon name="person" item-start></ion-icon>
+          <ion-icon name="contact" item-start></ion-icon>
           <ion-label stacked>Nombres:</ion-label>
           <ion-input formControlName="name" type="text" placeholder="Nombre"></ion-input>
         </ion-item>
         <ion-item>
-          <ion-icon name="person" item-start></ion-icon>
+          <ion-icon name="contact" item-start></ion-icon>
           <ion-label stacked>Apellidos:</ion-label>
           <ion-input formControlName="lastName" type="text" placeholder="Apellidos"></ion-input>
         </ion-item>
@@ -42,9 +42,9 @@
       <div padding>
         <button ion-button block type="submit" [disabled]="!myForm.valid">Guardar</button>
       </div>
-      <p text-center>Si ya tienes una cuenta
+      <div text-center>Si ya tienes una cuenta
           <a (click)="send()">inicia sesion</a>
-        </p>
+      </div>
     </form>
 
 </ion-content>

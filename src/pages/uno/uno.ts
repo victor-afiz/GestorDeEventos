@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AlertController } from 'ionic-angular';
 import {HttpClient} from '@angular/common/http';
+
+import { HomePage } from '../home/home';
+
 /**
  * Generated class for the UnoPage page.
  *
@@ -14,8 +18,7 @@ import {HttpClient} from '@angular/common/http';
   templateUrl: 'uno.html',
 })
 export class UnoPage {
-  //configUrl = ;
-  constructor(public navCtrl: NavController, public navParams: NavParams,public http: HttpClient)
+  constructor(public navCtrl: NavController, public navParams: NavParams,public http: HttpClient,private alertCtrl: AlertController)
   {
   }
 
@@ -28,9 +31,12 @@ export class UnoPage {
       });
 
   }
+
+  
   ionViewDidLoad() {
     console.log('ionViewDidLoad UnoPage');
   }
+
 }
 
 

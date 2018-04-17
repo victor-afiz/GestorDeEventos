@@ -8,9 +8,10 @@
 
 
 <ion-content padding>
-  <ion-tabs>
-    <ion-tab [root]="tab1Root" tabTitle="Listas" tabIcon="home"></ion-tab>
-    <ion-tab [root]="tab2Root" tabTitle="Crear" tabIcon="information-circle"></ion-tab>
-    <ion-tab [root]="tab3Root" (ionSelect)="presentConfirm()" tabTitle="Salir" tabIcon="contacts"></ion-tab>
+  
+  <ion-tabs color="dark">
+    <ion-tab [root]="tab1Root" tabTitle="Listas" tabIcon="clipboard"></ion-tab>
+    <ion-tab [root]="tab2Root" tabTitle="Crear" tabIcon="add-circle"></ion-tab>
+    <ion-tab [root]="tab3Root" (ionSelect)="presentConfirm()" tabTitle="Salir" tabIcon="log-out"></ion-tab>
   </ion-tabs>
 </ion-content>

@@ -6,6 +6,7 @@ import { HomePage } from '../home/home';
 import { UnoPage } from '../uno/uno';
 import { CrearPage } from '../crear/crear';
 import { SalirPage } from '../salir/salir';
+
 /**
  * Generated class for the MenuPage page.
  *
@@ -40,13 +41,12 @@ export class MenuPage {
           text: 'No',
           role: 'cancel',
           handler: () => {
-            console.log('Cancel clicked');
+            // PARA TERMINAR
           }
         },
         {
           text: 'Si',
           handler: () => {
-            console.log('Buy clicked');
             this.navCtrl.push(HomePage);
           }
         }
@@ -54,5 +54,4 @@ export class MenuPage {
     });
     alert.present();
   }
-
 }
