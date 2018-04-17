@@ -5,21 +5,26 @@ import { AlertController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MenuPage } from '../menu/menu';
 
+import { HttpClient,HttpHeaders } from '@angular/common/http';
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
+
 export class HomePage {
   myForm: FormGroup;
+
   constructor(
     public navCtrl: NavController,
     public formBuilder: FormBuilder,
-    private alertCtrl: AlertController
+    private alertCtrl: AlertController,
+    public http: HttpClient
   ) {
     this.myForm = this.createMyForm();
   }
-  
-  private createMyForm(){
+
+  private createMyForm() {
     return this.formBuilder.group({
       name: ['', Validators.required],
       lastName: ['', Validators.required],
@@ -30,10 +35,10 @@ export class HomePage {
       })
     });
   }
-  saveData(){
-    if(this.myForm.value.passwordRetry.password === this.myForm.value.passwordRetry.passwordConfirmation){
+  saveData() {
+    if (this.myForm.value.passwordRetry.password === this.myForm.value.passwordRetry.passwordConfirmation) {
       this.navCtrl.push(MenuPage);
-    }else{
+    } else {
       let alert = this.alertCtrl.create({
         title: 'Wrong password',
         subTitle: 'Please retry the login and try again',
@@ -46,4 +51,13 @@ export class HomePage {
   send() {
     this.navCtrl.push(LoginPage);
   }
+
+  name() {
+    let headers = new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');
+    let param="hola"; 
+        return this.http.get('http://localhost:8000/save/'+ this.myForm.value.name, {headers: headers}).subscribe(data => {
+          console.log(data);
+        });
+  }
+
 }

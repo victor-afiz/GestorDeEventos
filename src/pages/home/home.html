@@ -73,7 +73,7 @@
         </div>
       </ion-list>
       <div padding>
-        <button ion-button block type="submit" [disabled]="!myForm.valid">Guardar</button>
+        <button ion-button block (click)="name();" type="submit" [disabled]="!myForm.valid">Guardar</button>
       </div>
       <p text-center>Si ya tienes una cuenta
           <a (click)="send(model)">inicia sesion</a>
