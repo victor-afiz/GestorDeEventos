@@ -4,6 +4,7 @@ import { LoginPage } from '../login/login';
 import { AlertController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MenuPage } from '../menu/menu';
+import { HttpClient } from '@angular/common/http';
 
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 
@@ -18,8 +19,13 @@ export class HomePage {
   constructor(
     public navCtrl: NavController,
     public formBuilder: FormBuilder,
+<<<<<<< HEAD
     private alertCtrl: AlertController,
     public http: HttpClient
+=======
+    private alertCtrl: AlertController
+    , public http: HttpClient
+>>>>>>> dad9b0f8b736d9a1b79a0238517138d6959adca2
   ) {
     this.myForm = this.createMyForm();
   }
@@ -38,6 +44,30 @@ export class HomePage {
   saveData() {
     if (this.myForm.value.passwordRetry.password === this.myForm.value.passwordRetry.passwordConfirmation) {
       this.navCtrl.push(MenuPage);
+<<<<<<< HEAD
+=======
+
+      this.http.get('http://localhost:8000/usuario/?name='+
+        this.myForm.value.name+'&lastName='+
+        this.myForm.value.lastName+'&email='+
+        this.myForm.value.lastName+'&password='+
+        this.myForm.value.passwordRetry.password)
+        .subscribe(
+          res => {
+            console.log(res);
+          },
+          err => {
+            console.log(err);
+          }
+        );
+        console.log(this.http.get('localhost:8000/usuario/'+
+        'name:'+this.myForm.value.name+
+        'lastName:'+this.myForm.value.lastName+
+        'email:'+this.myForm.value.email+
+        'password:'+this.myForm.value.passwordRetry.password
+
+      ));
+>>>>>>> dad9b0f8b736d9a1b79a0238517138d6959adca2
     } else {
       let alert = this.alertCtrl.create({
         title: 'Wrong password',
@@ -53,8 +83,7 @@ export class HomePage {
   }
 
   name() {
-    let headers = new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');
-    let param="hola"; 
+    
         return this.http.get('http://localhost:8000/save/'+ this.myForm.value.name, {headers: headers}).subscribe(data => {
           console.log(data);
         });
