@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { HttpClient } from '@angular/common/http';
+import { HomePage } from '../home/home';
 /**
  * Generated class for the LoginPage page.
  *
@@ -36,8 +37,8 @@ export class LoginPage {
     console.log('ionViewDidLoad LoginPage');
   }
   find(){
-      this.http.get('http://localhost:8000/usuario/?email='+this.myForm.value.email+'&password='+
-          this.myForm.value.passwordRetry.password)
+      this.http.post('http://localhost:8000/login/?email='+this.myForm.value.email+'&password='+
+          this.myForm.value.password,"")
           .subscribe(
               res => {
                   console.log(res);
@@ -47,5 +48,8 @@ export class LoginPage {
               }
           );
   }
+  send() {
+    this.navCtrl.push(HomePage);
+}
 
 }

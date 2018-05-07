@@ -35,23 +35,43 @@ export class HomePage {
             })
         });
     }
+  presentConfirm() {
 
+  }
     saveData() {
 
         if (this.myForm.value.passwordRetry.password === this.myForm.value.passwordRetry.passwordConfirmation){
-            this.navCtrl.push(MenuPage);
-            this.http.get('http://localhost:8000/usuario/?name='+
+            //
+            this.http.post('http://localhost:8000/usuario/?name='+
                 this.myForm.value.name+'&lastName='+
                 this.myForm.value.lastName+'&email='+
-                this.myForm.value.lastName+'&password='+
-                this.myForm.value.passwordRetry.password)
+                this.myForm.value.email+'&password='+
+                this.myForm.value.passwordRetry.password,"")
                 .subscribe(
                     res => {
                         console.log(res);
+
+                        if(res[0] === 'existe'){
+                          let alert = this.alertCtrl.create({
+                            title: 'Correo en uso',
+                            subTitle: 'Intentelo con otro',
+                            buttons: ['Registrar']
+                          });
+                          alert.present();
+                        }else if (res[0] === 'nuevo'){
+                          this.navCtrl.push(MenuPage,res);
+                        }
                     },
                     err => {
                         console.log(err);
+                      let alert = this.alertCtrl.create({
+                        title: 'Server error',
+                        subTitle: 'Intentelo mas tarde',
+                        buttons: ['Retry']
+                      });
+                      alert.present();
                     }
+
                 );
         } else {
             let alert = this.alertCtrl.create({
@@ -61,6 +81,9 @@ export class HomePage {
             });
             alert.present();
         }
+    }
+    login(res){
+
     }
     send() {
         this.navCtrl.push(LoginPage);
