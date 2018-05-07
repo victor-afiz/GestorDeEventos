@@ -32,9 +32,12 @@
           </ion-col>
         </ion-row>  
       </ion-grid>
-      <ion-label>Date</ion-label>
-      <ion-datetime displayFormat="MMM DD, YYYY HH:mm" [(ngModel)]="myDate"></ion-datetime>
-
+      <ion-grid>
+        <ion-row>
+            <ion-label>Date</ion-label>
+            <ion-datetime displayFormat="MMM DD, YYYY HH:mm" [(ngModel)]="myDate"></ion-datetime>
+        </ion-row>
+      </ion-grid>
       <button ion-button block type="submit">Añadir Personas</button>
       <button ion-button block type="submit">Crear Evento</button>
   </ion-list>

@@ -1,5 +1,5 @@
 <ion-header >
-  <ion-navbar hideBackButton="true">
+  <ion-navbar>
     <ion-title text-center>
       <p>Registro</p>
     </ion-title>
@@ -41,9 +41,6 @@
       </ion-list>
       <div padding>
         <button ion-button block type="submit" [disabled]="!myForm.valid">Guardar</button>
-      </div>
-      <div text-center>Si ya tienes una cuenta
-          <a (click)="send()">inicia sesion</a>
       </div>
     </form>
 
