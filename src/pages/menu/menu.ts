@@ -41,7 +41,7 @@ export class MenuPage {
           text: 'No',
           role: 'cancel',
           handler: () => {
-            // PARA TERMINAR
+            this.navCtrl.push(MenuPage);
           }
         },
         {
