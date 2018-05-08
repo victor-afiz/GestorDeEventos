@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { HttpClient } from '@angular/common/http';
 import { HomePage } from '../home/home';
+import { MenuPage } from '../menu/menu';
 /**
  * Generated class for the LoginPage page.
  *
@@ -42,6 +43,9 @@ export class LoginPage {
           .subscribe(
               res => {
                   console.log(res);
+                  if (res){
+                    this.navCtrl.push(MenuPage)
+                  }
               },
               err => {
                   console.log(err);
@@ -50,6 +54,6 @@ export class LoginPage {
   }
   send() {
     this.navCtrl.push(HomePage);
-}
+  }
 
 }
