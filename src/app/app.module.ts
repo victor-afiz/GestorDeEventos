@@ -14,9 +14,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { UnoPage } from '../pages/uno/uno';
 import { CrearPage } from '../pages/crear/crear';
 import { SalirPage } from '../pages/salir/salir';
-
-
-
+import { AboutPage } from '../pages/about/about';
 
 @NgModule({
   declarations: [
@@ -27,7 +25,8 @@ import { SalirPage } from '../pages/salir/salir';
     TabsPage,
     UnoPage,
     CrearPage,
-    SalirPage
+    SalirPage,
+    AboutPage
   ],
   imports: [
     BrowserModule,
@@ -43,7 +42,8 @@ import { SalirPage } from '../pages/salir/salir';
     TabsPage,
     UnoPage,
     CrearPage,
-    SalirPage
+    SalirPage,
+    AboutPage
   ],
   providers: [
     StatusBar,
