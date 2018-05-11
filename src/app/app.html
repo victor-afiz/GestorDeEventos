@@ -9,17 +9,17 @@
                 <ion-label>Acerca de nosotros</ion-label>
               </button>
           
-              <button ion-item>
+              <button ion-item (click)="policy()">
                 <ion-icon id="color" name="lock" item-start></ion-icon>
                 <ion-label>Politicas de privacidad</ion-label>
               </button>
               
-              <button ion-item>
+              <button ion-item (click)="version()">
                   <ion-icon id="color" name="information" item-start></ion-icon>
                   <ion-label>Version</ion-label>
                 </button>
 
-              <button ion-item>
+              <button ion-item (click)="exit()">
                 <ion-icon id="color" name="exit" item-start></ion-icon>
                 <ion-label>Salir</ion-label>
               </button>

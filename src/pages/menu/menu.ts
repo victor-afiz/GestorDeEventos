@@ -5,7 +5,6 @@ import { AlertController } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { UnoPage } from '../uno/uno';
 import { CrearPage } from '../crear/crear';
-import { SalirPage } from '../salir/salir';
 
 /**
  * Generated class for the MenuPage page.
@@ -22,7 +21,6 @@ import { SalirPage } from '../salir/salir';
 export class MenuPage {
   tab1Root = UnoPage;
   tab2Root = CrearPage;
-  tab3Root = SalirPage;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,private alertCtrl: AlertController) {
     
@@ -32,26 +30,5 @@ export class MenuPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad MenuPage');
   }
-  presentConfirm() {
-    let alert = this.alertCtrl.create({
-      title: 'Salir',
-      message: '¿Seguro que quieres salir de la aplicación?',
-      buttons: [
-        {
-          text: 'No',
-          role: 'cancel',
-          handler: () => {
-            this.navCtrl.push(MenuPage);
-          }
-        },
-        {
-          text: 'Si',
-          handler: () => {
-            this.navCtrl.push(HomePage);
-          }
-        }
-      ]
-    });
-    alert.present();
-  }
+ 
 }

@@ -15,6 +15,8 @@ import { UnoPage } from '../pages/uno/uno';
 import { CrearPage } from '../pages/crear/crear';
 import { SalirPage } from '../pages/salir/salir';
 import { AboutPage } from '../pages/about/about';
+import { PrivacyPolicyPage } from '../pages/privacy-policy/privacy-policy';
+import { VersionPage } from '../pages/version/version';
 
 @NgModule({
   declarations: [
@@ -26,11 +28,19 @@ import { AboutPage } from '../pages/about/about';
     UnoPage,
     CrearPage,
     SalirPage,
-    AboutPage
+    AboutPage,
+    PrivacyPolicyPage,
+    VersionPage
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp, {
+			platforms: {
+				ios: {
+					backButtonText: ''
+				}
+			}
+		}),
     HttpClientModule
   ],
   bootstrap: [IonicApp],
@@ -43,7 +53,9 @@ import { AboutPage } from '../pages/about/about';
     UnoPage,
     CrearPage,
     SalirPage,
-    AboutPage
+    AboutPage,
+    PrivacyPolicyPage,
+    VersionPage
   ],
   providers: [
     StatusBar,
