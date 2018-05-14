@@ -12,20 +12,12 @@ import { AboutPage } from '../pages/about/about';
 import { MenuPage } from '../pages/menu/menu';
 import { HomePage } from '../pages/home/home';
 
-<<<<<<< HEAD
-=======
-//import { HomePage } from '../pages/home/home';
-import { MenuPage } from '../pages/menu/menu';
->>>>>>> grid-beta
 @Component({
   templateUrl: 'app.html'
 
 })
 export class MyApp {
-<<<<<<< HEAD
   @ViewChild('mycontent') nav: NavController
-=======
->>>>>>> grid-beta
   rootPage:any = MenuPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public menuCtrl: MenuController, public alertCtrl: AlertController) {
