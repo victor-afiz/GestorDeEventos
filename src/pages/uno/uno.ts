@@ -3,8 +3,6 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 import {HttpClient} from '@angular/common/http';
 
-import { HomePage } from '../home/home';
-
 /**
  * Generated class for the UnoPage page.
  *
