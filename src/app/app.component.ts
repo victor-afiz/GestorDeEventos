@@ -11,14 +11,14 @@ import { VersionPage } from '../pages/version/version';
 import { AboutPage } from '../pages/about/about';
 import { MenuPage } from '../pages/menu/menu';
 import { HomePage } from '../pages/home/home';
-
+import { LoginPage } from '../pages/login/login';
 @Component({
   templateUrl: 'app.html'
 
 })
 export class MyApp {
   @ViewChild('mycontent') nav: NavController
-  rootPage:any = MenuPage;
+  rootPage:any = LoginPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public menuCtrl: MenuController, public alertCtrl: AlertController) {
     platform.ready().then(() => {

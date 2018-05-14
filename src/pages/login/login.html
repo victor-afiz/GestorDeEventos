@@ -1,13 +1,9 @@
 <ion-header>
 
   <ion-navbar>
-<<<<<<< HEAD
     <ion-title text-center>
       <p>Login</p>
     </ion-title>
-=======
-    <ion-title>Login</ion-title>
->>>>>>> Primer commit
   </ion-navbar>
 
 </ion-header>
@@ -20,7 +16,7 @@
           <ion-item>
             <ion-icon name="mail" item-start></ion-icon>
             <ion-label stacked>Correo electronico:</ion-label>
-            <ion-input formControlName="email" type="email" placeholder="Email"></ion-input>
+            <ion-input pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" formControlName="email" type="email" placeholder="Email"></ion-input>
           </ion-item>
             <ion-item>
               <ion-icon name="eye" item-start></ion-icon>
