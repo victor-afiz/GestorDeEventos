@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 export class ForActividadesComponent {
 
   text: string;
-  todo : any = "" ;
+  todo : any = [] ;
   actividades:any[] = [
     {"imagen":" https://khms0.googleapis.com/kh?v=798&hl=en-US&x=65412&y=50345&z=17", "actividad":"playa","participantes":"64"},
     {"imagen":" https://khms1.googleapis.com/kh?v=798&hl=es&x=2495&y=3665&z=13", "actividad":"ciclismo","participantes":"10"}
@@ -15,7 +15,9 @@ export class ForActividadesComponent {
   constructor() {
 
     for(let total of this.actividades){ 
-      this.todo = total;
+      this.todo.push(total);
+      console.log(this.todo);
+      
     }  
     this.text = this.todo;
   }
