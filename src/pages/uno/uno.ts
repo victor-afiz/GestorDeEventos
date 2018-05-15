@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 import {HttpClient} from '@angular/common/http';
 
+import {ForActividadesComponent} from '../../components/for-actividades/for-actividades';
+
 /**
  * Generated class for the UnoPage page.
  *

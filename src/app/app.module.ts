@@ -14,9 +14,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { UnoPage } from '../pages/uno/uno';
 import { CrearPage } from '../pages/crear/crear';
 import { SalirPage } from '../pages/salir/salir';
-
-
-
+import {ForActividadesComponent} from '../components/for-actividades/for-actividades';
 
 @NgModule({
   declarations: [
@@ -27,7 +25,8 @@ import { SalirPage } from '../pages/salir/salir';
     TabsPage,
     UnoPage,
     CrearPage,
-    SalirPage
+    SalirPage,
+    ForActividadesComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +42,8 @@ import { SalirPage } from '../pages/salir/salir';
     TabsPage,
     UnoPage,
     CrearPage,
-    SalirPage
+    SalirPage,
+    ForActividadesComponent
   ],
   providers: [
     StatusBar,
