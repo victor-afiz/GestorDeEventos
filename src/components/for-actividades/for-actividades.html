@@ -1,0 +1,7 @@
+<div *ngFor="let todo of text">
+  <ion-card>
+      <img [src]=sanitizer.bypassSecurityTrustUrl(todo.imagen)/>
+      <div class="card-title">{{todo.actividad}}</div>
+      <div class="card-subtitle">{{todo.participantes}} Participantes</div>
+  </ion-card>
+</div>

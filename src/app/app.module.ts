@@ -17,6 +17,7 @@ import { SalirPage } from '../pages/salir/salir';
 import { AboutPage } from '../pages/about/about';
 import { PrivacyPolicyPage } from '../pages/privacy-policy/privacy-policy';
 import { VersionPage } from '../pages/version/version';
+import {ForActividadesComponent} from '../components/for-actividades/for-actividades';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { VersionPage } from '../pages/version/version';
     SalirPage,
     AboutPage,
     PrivacyPolicyPage,
-    VersionPage
+    VersionPage,
+    ForActividadesComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +57,8 @@ import { VersionPage } from '../pages/version/version';
     SalirPage,
     AboutPage,
     PrivacyPolicyPage,
-    VersionPage
+    VersionPage,
+    ForActividadesComponent
   ],
   providers: [
     StatusBar,
