@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'for-actividades',
@@ -12,13 +13,11 @@ export class ForActividadesComponent {
     {"imagen":" https://khms0.googleapis.com/kh?v=798&hl=en-US&x=65412&y=50345&z=17", "actividad":"playa","participantes":"64"},
     {"imagen":" https://khms1.googleapis.com/kh?v=798&hl=es&x=2495&y=3665&z=13", "actividad":"ciclismo","participantes":"10"}
   ]
-  constructor() {
+  constructor(public sanitizer:DomSanitizer) {
 
-    for(let total of this.actividades){ 
+    for(let total of this.actividades){
       this.todo.push(total);
-      console.log(this.todo);
-      
-    }  
+    }      
     this.text = this.todo;
   }
 }

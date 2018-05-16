@@ -1,6 +1,7 @@
-
+<div *ngFor="let todo of text">
     <ion-card>
-        <img src="https://khms1.googleapis.com/kh?v=798&amp;hl=es&amp;x=2495&amp;y=3665&amp;z=13"/>
-        <div class="card-title">{{text[1].actividad}}</div>
-        <div class="card-subtitle">{{text[1].participantes}} Participantes</div>
+        <img [src]=sanitizer.bypassSecurityTrustUrl(todo.imagen)/>
+        <div class="card-title">{{todo.actividad}}</div>
+        <div class="card-subtitle">{{todo.participantes}} Participantes</div>
     </ion-card>
+</div>
