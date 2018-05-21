@@ -27,7 +27,7 @@ export class HomePage {
     private createMyForm() {
         return this.formBuilder.group({
             name: ['', Validators.required],
-            lastName: ['', Validators.required],
+            nickName: ['', Validators.required],
             email: ['', Validators.required],
             passwordRetry: this.formBuilder.group({
                 password: ['', Validators.required],
@@ -43,8 +43,8 @@ export class HomePage {
         if (this.myForm.value.passwordRetry.password === this.myForm.value.passwordRetry.passwordConfirmation){
             //
             this.http.post('http://localhost:8000/usuario/?name='+
-                this.myForm.value.name+'&lastName='+
-                this.myForm.value.lastName+'&email='+
+                this.myForm.value.name+'&nickName='+
+                this.myForm.value.nickName+'&email='+
                 this.myForm.value.email+'&password='+
                 this.myForm.value.passwordRetry.password,"")
                 .subscribe(
