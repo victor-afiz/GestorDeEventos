@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
+import { NavController } from 'ionic-angular';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'for-actividades',
@@ -9,16 +11,34 @@ export class ForActividadesComponent {
 
   text: string;
   todo : any = [] ;
+  all : any = [] ;
   actividades:any[] = [
-    {"imagen":" https://khms0.googleapis.com/kh?v=798&hl=en-US&x=65412&y=50345&z=17", "actividad":"playa","participantes":"64"},
-    {"imagen":" https://khms1.googleapis.com/kh?v=798&hl=es&x=2495&y=3665&z=13", "actividad":"ciclismo","participantes":"10"}
+   
   ]
-  constructor(public sanitizer:DomSanitizer) {
+  constructor(public sanitizer:DomSanitizer,public navCtrl: NavController,public http: HttpClient) {
+    this.http.get('http://localhost:8000/GetAllEvents/')
+        .subscribe(
+            res => {
+                console.log(res);
+                if (res){
+                  this.all = res;
+                  for(let total of this.all){
+                    this.todo.push(total);
+                  console.log(total.Name);
+                  }
+                  this.text = this.todo;
+                }
+            },
+            err => {
+                console.log("Error",err);
+            }
+        );
 
-    for(let total of this.actividades){
-      this.todo.push(total);
-    }      
-    this.text = this.todo;
+    
   }
+
+
+    
+
 }
 
