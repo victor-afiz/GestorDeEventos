@@ -53,7 +53,7 @@ export class CrearPage {
 
   pickData()
   {
-    this.http.post('http://localhost:8000/usuario/?name='+
+    this.http.post('http://localhost:8000/creareventos/?name='+
       this.myForm.value.name+'&descripcion='+
       this.myForm.value.descripcion+'&precio='+
       this.myForm.value.precio+'&date='+

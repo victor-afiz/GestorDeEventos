@@ -57,7 +57,7 @@ export class MyApp {
           }
         },
         {
-          text: 'Si',
+          text: 'Sis',
           handler: () => {
             this.nav.push(HomePage);
             this.menuCtrl.close();
