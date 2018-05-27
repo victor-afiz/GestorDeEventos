@@ -10,6 +10,7 @@ import { PrivacyPolicyPage } from '../pages/privacy-policy/privacy-policy';
 import { VersionPage } from '../pages/version/version';
 import { AboutPage } from '../pages/about/about';
 import { MenuPage } from '../pages/menu/menu';
+import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 
 @Component({
