@@ -16,8 +16,10 @@ import {HttpClient} from '@angular/common/http';
   templateUrl: 'uno.html',
 })
 export class UnoPage {
+  res: any;
   constructor(public navCtrl: NavController, public navParams: NavParams,public http: HttpClient,private alertCtrl: AlertController)
   {
+    console.log(this.res = navParams.data[1]);
   }
 
   getProductos(){

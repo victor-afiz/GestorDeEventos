@@ -44,7 +44,7 @@ export class LoginPage {
               res => {
                   console.log(res);
                   if (res){
-                    this.navCtrl.push(MenuPage)
+                    this.navCtrl.push(MenuPage, res)
                   }
               },
               err => {

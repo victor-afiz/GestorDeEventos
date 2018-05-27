@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 /**
  * Generated class for the CrearPage page.
  *
@@ -15,10 +17,21 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   
 })
 export class CrearPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  res: any;
+  myForm: FormGroup;
+  constructor(public navCtrl: NavController, public navParams: NavParams,public formBuilder: FormBuilder,public http: HttpClient) {
+    this.res = navParams.data[1];
+    this.myForm = this.createMyForm();
   }
-  
+  private createMyForm(){
+    return this.formBuilder.group({
+      Nombre: ['', Validators.required],
+      Descripción: ['', Validators.required],
+      total: ['', Validators.required],
+      fecha: ['', Validators.required]
+
+    });
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CrearPage');
@@ -30,5 +43,9 @@ export class CrearPage {
     textarea.style.height 	= textarea.scrollHeight + 'px';
     return;
   }
-
+  pickData(){
+    this.http.post('http://localhost:8000/crearevento/?admin='+this.res+'&nombre='+
+          this.myForm.value.Nombre,"&descripcion="+this.myForm.value.Descripción+'&fecha='
+         +this.myForm.value.fecha+"")
+  }
 }
