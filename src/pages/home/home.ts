@@ -82,9 +82,6 @@ export class HomePage {
             alert.present();
         }
     }
-    login(res){
-
-    }
     send() {
         this.navCtrl.push(LoginPage);
     }

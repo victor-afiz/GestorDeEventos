@@ -15,7 +15,7 @@ export class ForActividadesComponent {
   all : any = [] ;
   actividades:any[] = []
   constructor(public sanitizer:DomSanitizer,public navCtrl: NavController,public navParams: NavParams,public http: HttpClient) {
-    this.http.get('http://localhost:8000/GetAllEvents/')
+    this.http.get('http://localhost:8000/getAllEvents/')
         .subscribe(
             res => {
                 if (res){
@@ -34,11 +34,11 @@ export class ForActividadesComponent {
             }
         );
 
-    
+
   }
 
 
-    
+
 
 }
 
