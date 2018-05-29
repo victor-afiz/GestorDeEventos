@@ -24,7 +24,6 @@ export class ForActividadesComponent {
                     if (total.AdminID == this.navParams.data[1]){
                       this.todo.push(total);
                     }
-
                   }
                   this.text = this.todo;
                 }
@@ -33,12 +32,6 @@ export class ForActividadesComponent {
                 console.log("Error",err);
             }
         );
-
-
   }
-
-
-
-
 }
 
