@@ -60,7 +60,7 @@ export class MyApp {
         {
           text: 'Si',
           handler: () => {
-            this.nav.push(HomePage);
+            this.nav.push(LoginPage);
             this.menuCtrl.close();
           }
         }
