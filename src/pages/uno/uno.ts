@@ -53,7 +53,8 @@ export class UnoPage {
   }
     lista()
     {
-        this.navCtrl.push(ListasPage);
+        this.navCtrl.push(ListasPage)
+
     }
 
 }
