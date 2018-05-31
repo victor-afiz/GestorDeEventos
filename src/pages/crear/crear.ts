@@ -1,14 +1,8 @@
-
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-/**
- * Generated class for the CrearPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { AlertController } from 'ionic-angular';
 
 @IonicPage()
 
@@ -31,7 +25,7 @@ export class CrearPage {
     'Museo'
   ];
   imagenSeleccionada: any;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder: FormBuilder, public http: HttpClient) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder: FormBuilder, public http: HttpClient, public alertCtrl: AlertController) {
     this.res = navParams.data[1];
     this.myForm = this.createMyForm();
   }
@@ -73,7 +67,25 @@ export class CrearPage {
       '&IdAdmin=' + this.res +
       '&allUSer=' + this.unique_array + " ").subscribe(
         res => {
-          console.log(res);
+                let alert = this.alertCtrl.create({
+                    title: 'Exito',
+                    subTitle: 'Se creo el evento con exito',
+                    buttons: ['OK']
+                });
+                alert.present();
+                this.myForm.patchValue({Nombre: ""});
+                this.myForm.patchValue({Descripción: ""});
+                this.myForm.patchValue({fecha: ""});
+                this.myForm.patchValue({total: ""});
+
+                console.log(this.imagenSeleccionada);
+                console.log(this.unique_array);
+                console.log(this.user);
+
+                this.user = [];
+                this.unique_array = [];
+                this.imagenSeleccionada = "";
+
         },
         err => {
           console.log(err);
@@ -81,6 +93,7 @@ export class CrearPage {
 
       );
   }
+
   push(id) {
     this.user.push(id);
     this.removeDuplicates(this.user);
@@ -95,7 +108,6 @@ export class CrearPage {
     }
   }
   setImagen(e) {
-    // this.imagenSeleccionada
     switch (e) {
       case 'Playa':
       this.imagenSeleccionada = "http://jsequeiros.com/sites/default/files/imagen-cachorro-comprimir.jpg";

@@ -13,7 +13,8 @@ export class ForActividadesComponent {
   text: string;
   todo : any = [] ;
   all : any = [] ;
-  actividades:any[] = []
+  actividades:any[] = [];
+
   constructor(public sanitizer:DomSanitizer,public navCtrl: NavController,public navParams: NavParams,public http: HttpClient) {
     this.http.get('http://localhost:8000/getAllEvents/')
         .subscribe(
