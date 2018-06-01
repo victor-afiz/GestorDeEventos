@@ -14,15 +14,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'imagenes.html',
 })
 export class ImagenesPage {
-
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ImagenesPage');
-  }
-    recogeDatos(e)
+    recogeDatos()
     {
-      console.log(e);
+        this.navCtrl.pop();
     }
 }

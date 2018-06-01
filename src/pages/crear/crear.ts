@@ -111,7 +111,12 @@ export class CrearPage {
       }
     }
   }
-  pickImage() {
+  pickImage()
+  {
        this.navCtrl.push(ImagenesPage);
   }
+    ionViewWillEnter()
+    {
+        console.log(this.navParams.get("e"));
+    }
 }
