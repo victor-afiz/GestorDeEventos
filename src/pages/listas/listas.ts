@@ -15,11 +15,30 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ListasPage {
 
+    disabled: boolean = false;
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    console.log(this.navParams.data);
+  }
+    protected adjustTextarea(event: any): void {
+        let textarea: any = event.target;
+        textarea.style.overflow = 'hidden';
+        textarea.style.height = 'auto';
+        textarea.style.height = textarea.scrollHeight + 'px';
+        return;
+    }
+
+  ionViewDidLoad()
+  {
+      this.isDisabled();
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ListasPage');
-  }
-
+    isDisabled()
+    {
+        if (this.navParams.data[0].AdminID != this.navParams.data[1]){
+            this.disabled = true;
+        }else{
+            this.disabled = false;
+        }
+    }
 }

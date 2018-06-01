@@ -27,11 +27,7 @@
             <ion-input formControlName="total" type="Number" min="0" placeholder="Total a gastar"></ion-input>
           </ion-col>
           <ion-col>
-            <ion-list id="lists" no-lines>
-              <button ion-item *ngFor="let image of Images" (click)="setImagen(image)">
-                {{ image }}
-              </button> 
-            </ion-list>
+            <button ion-button block (click)="pickImage()"> Examinar </button>
           </ion-col>
         </ion-row>
         <ion-row>

@@ -18,6 +18,7 @@ import { AboutPage } from '../pages/about/about';
 import { PrivacyPolicyPage } from '../pages/privacy-policy/privacy-policy';
 import { VersionPage } from '../pages/version/version';
 import { ListasPage } from '../pages/listas/listas';
+import { ImagenesPage } from '../pages/imagenes/imagenes';
 import {ForActividadesComponent} from '../components/for-actividades/for-actividades';
 
 @NgModule({
@@ -34,7 +35,8 @@ import {ForActividadesComponent} from '../components/for-actividades/for-activid
     PrivacyPolicyPage,
     VersionPage,
     ForActividadesComponent,
-      ListasPage
+      ListasPage,
+      ImagenesPage
   ],
   imports: [
     BrowserModule,
@@ -61,7 +63,8 @@ import {ForActividadesComponent} from '../components/for-actividades/for-activid
     PrivacyPolicyPage,
     VersionPage,
     ForActividadesComponent,
-      ListasPage
+      ListasPage,
+      ImagenesPage
   ],
   providers: [
     StatusBar,

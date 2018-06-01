@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { AlertController } from 'ionic-angular';
+import { ImagenesPage } from '../imagenes/imagenes';
 
 @IonicPage()
 
@@ -16,7 +17,8 @@ export class CrearPage {
   unique_array: any = [];
   user: any = [];
   a: any = [];
-  text: any;
+  all: any = [];
+  text: any =[];
   myForm: FormGroup;
   Images = [
     'Playa',
@@ -25,8 +27,10 @@ export class CrearPage {
     'Museo'
   ];
   imagenSeleccionada: any;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder: FormBuilder, public http: HttpClient, public alertCtrl: AlertController) {
     this.res = navParams.data[1];
+    this.user = [this.res];
     this.myForm = this.createMyForm();
   }
   private createMyForm() {
@@ -43,7 +47,12 @@ export class CrearPage {
     this.http.get('http://localhost:8000/User/').subscribe(
       res => {
         if (res) {
-          this.text = res;
+            this.all = res;
+            for (let i = 0; i<this.all.length; i++){
+              if (this.all[i].id != this.navParams.data[1]){
+                  this.text = this.all;
+              }
+            }
         }
       },
       err => {
@@ -78,10 +87,6 @@ export class CrearPage {
                 this.myForm.patchValue({fecha: ""});
                 this.myForm.patchValue({total: ""});
 
-                console.log(this.imagenSeleccionada);
-                console.log(this.unique_array);
-                console.log(this.user);
-
                 this.user = [];
                 this.unique_array = [];
                 this.imagenSeleccionada = "";
@@ -97,7 +102,6 @@ export class CrearPage {
   push(id) {
     this.user.push(id);
     this.removeDuplicates(this.user);
-    console.log(this.unique_array);
   }
 
   removeDuplicates(user) {
@@ -107,20 +111,7 @@ export class CrearPage {
       }
     }
   }
-  setImagen(e) {
-    switch (e) {
-      case 'Playa':
-      this.imagenSeleccionada = "http://jsequeiros.com/sites/default/files/imagen-cachorro-comprimir.jpg";
-        break;
-      case 'Bar':
-      this.imagenSeleccionada = "https://www.google.com/url?sa=i&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwizx6vT2avbAhWE6RQKHTV4AJsQjRx6BAgBEAU&url=http%3A%2F%2Fwww.cdn.com.do%2F2018%2F02%2F23%2Fplaya-dominicana-una-de-las-diez-mejores-del-mundo-segun-ranking-tripadvisor%2F&psig=AOvVaw1uaja7aiW2QLm2Fv7XQhr0&ust=1527710071132086+++-";
-        break;
-      case 'Restraurante':
-      this.imagenSeleccionada = "https://www.google.com/url?sa=i&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwizx6vT2avbAhWE6RQKHTV4AJsQjRx6BAgBEAU&url=http%3A%2F%2Fwww.cdn.com.do%2F2018%2F02%2F23%2Fplaya-dominicana-una-de-las-diez-mejores-del-mundo-segun-ranking-tripadvisor%2F&psig=AOvVaw1uaja7aiW2QLm2Fv7XQhr0&ust=1527710071132086+++-";
-        break;
-      case 'Museo':
-      this.imagenSeleccionada = "https://www.google.com/url?sa=i&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwizx6vT2avbAhWE6RQKHTV4AJsQjRx6BAgBEAU&url=http%3A%2F%2Fwww.cdn.com.do%2F2018%2F02%2F23%2Fplaya-dominicana-una-de-las-diez-mejores-del-mundo-segun-ranking-tripadvisor%2F&psig=AOvVaw1uaja7aiW2QLm2Fv7XQhr0&ust=1527710071132086+++-";
-        break;
-    }
+  pickImage() {
+       this.navCtrl.push(ImagenesPage);
   }
 }

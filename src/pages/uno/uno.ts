@@ -51,10 +51,13 @@ export class UnoPage {
               }
           );
   }
-    lista()
+    lista(object)
     {
-        this.navCtrl.push(ListasPage)
-
+        let array =[
+            object,
+            this.res
+        ];
+        this.navCtrl.push(ListasPage,array);
     }
 
 }
