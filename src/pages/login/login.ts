@@ -38,7 +38,7 @@ export class LoginPage {
     console.log('ionViewDidLoad LoginPage');
   }
   find(){
-      this.http.post('http://localhost:8000/login/?email='+this.myForm.value.email+'&password='+
+      this.http.post('http://80.211.5.206/index.php/login/?email='+this.myForm.value.email+'&password='+
           this.myForm.value.password,"")
           .subscribe(
               res => {

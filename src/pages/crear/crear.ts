@@ -44,7 +44,7 @@ export class CrearPage {
   }
 
   ionViewDidLoad() {
-    this.http.get('http://localhost:8000/User/').subscribe(
+    this.http.get('http://80.211.5.206/index.php/User/').subscribe(
       res => {
         if (res) {
             this.all = res;
@@ -68,7 +68,7 @@ export class CrearPage {
     return;
   }
   pickData() {
-    this.http.get('http://localhost:8000/crearevento/?nombre=' + this.myForm.value.Nombre +
+    this.http.get('http://80.211.5.206/index.php/crearevento/?nombre=' + this.myForm.value.Nombre +
       '&descripcion=' + this.myForm.value.Descripción +
       '&fecha=' + this.myForm.value.fecha +
       '&url='+this.imagenSeleccionada +

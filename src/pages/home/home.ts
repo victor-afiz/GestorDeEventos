@@ -41,7 +41,7 @@ export class HomePage {
 
         if (this.myForm.value.passwordRetry.password === this.myForm.value.passwordRetry.passwordConfirmation){
 
-            this.http.post('http://localhost:8000/usuario/?name='+
+            this.http.post('http://80.211.5.206/index.php/usuario/?name='+
                 this.myForm.value.name+'&nickName='+
                 this.myForm.value.nickName+'&email='+
                 this.myForm.value.email+'&password='+

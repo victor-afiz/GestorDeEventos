@@ -32,7 +32,7 @@ export class UnoPage {
   {
       this.todo = [];
 
-      this.http.get('http://localhost:8000/getAllEvents/')
+      this.http.get('http://80.211.5.206/index.php/getAllEvents/')
           .subscribe(
               res => {
                   if (res){
