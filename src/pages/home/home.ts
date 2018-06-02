@@ -45,7 +45,7 @@ export class HomePage {
                 this.myForm.value.name+'&nickName='+
                 this.myForm.value.nickName+'&email='+
                 this.myForm.value.email+'&password='+
-                this.myForm.value.passwordRetry.password,"")
+                this.myForm.value.passwordRetry.password)
                 .subscribe(
                     res => {
                         console.log(res);
