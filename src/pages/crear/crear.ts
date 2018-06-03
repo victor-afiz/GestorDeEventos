@@ -20,6 +20,7 @@ export class CrearPage {
   all: any = [];
   text: any =[];
   myForm: FormGroup;
+  imagen: any;
   Images = [
     'Playa',
     'Bar',
@@ -117,6 +118,7 @@ export class CrearPage {
   }
     ionViewWillEnter()
     {
-        console.log(this.navParams.get("e"));
+      this.imagenSeleccionada = this.navParams.get('ruta')|| null;
+      console.log(this.imagenSeleccionada);
     }
 }

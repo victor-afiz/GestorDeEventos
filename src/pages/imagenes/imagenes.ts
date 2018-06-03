@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CrearPage} from '../crear/crear';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 /**
@@ -14,10 +15,12 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'imagenes.html',
 })
 export class ImagenesPage {
+  id: any;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
-    recogeDatos()
+    recogeDatos(ruta)
     {
-        this.navCtrl.pop();
+      this.navCtrl.getPrevious().data.ruta = ruta;
+      this.navCtrl.pop();
     }
 }
