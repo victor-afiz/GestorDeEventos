@@ -81,4 +81,8 @@ export class HomePage {
             alert.present();
         }
     }
+    send()
+    {
+        this.navCtrl.push(LoginPage);
+    }
 }

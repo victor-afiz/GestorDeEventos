@@ -19,7 +19,7 @@
         <ion-item>
           <ion-icon name="contact" item-start></ion-icon>
           <ion-label stacked>NickName:</ion-label>
-          <ion-input formControlName="nickName" type="text" placeholder="Apellidos"></ion-input>
+          <ion-input formControlName="nickName" type="text" placeholder="Nick name"></ion-input>
         </ion-item>
         <ion-item>
           <ion-icon name="mail" item-start></ion-icon>
@@ -43,5 +43,8 @@
         <button ion-button block type="submit" [disabled]="!myForm.valid">Guardar</button>
       </div>
     </form>
+    <div text-center>Si ya tienes cuenta
+      <a (click)="send()">Login</a>
+  </div>
 
 </ion-content>
