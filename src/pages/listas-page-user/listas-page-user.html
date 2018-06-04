@@ -14,5 +14,14 @@
 
 
 <ion-content padding>
-
+    <ion-input [disabled]="true" text-center value="{{this.navParams.data[0].Description}}"></ion-input>
+    <ion-item >
+        <ion-label></ion-label>
+        <ion-input disabled = "false" [(ngModel)]="message" placeholder ="Por insertar mensaje"></ion-input>
+    </ion-item>
+    <ion-item *ngFor="let text of todo">
+      <ion-label></ion-label>
+      <ion-input disabled = "true" value ="{{text.mensaje}}" placeholder ="Por insertar mensaje"></ion-input>
+    </ion-item>
+    <button ion-button block (click)="inserta()">Insertar Datos</button>
 </ion-content>

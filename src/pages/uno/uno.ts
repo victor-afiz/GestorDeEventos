@@ -36,7 +36,7 @@ export class UnoPage {
           .subscribe(
               res => {
                     this.all = res;
-                
+                    console.log(res);
               },
               err => {
                   console.log("Error",err);

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { HttpClient } from '@angular/common/http';
 
 /**
  * Generated class for the ListasPageUserPage page.
@@ -15,11 +16,37 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ListasPageUserPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+todo : any = [];
+disabled: boolean = true;
+all : any = [];
+message : string;
+  constructor(public navCtrl: NavController, public navParams: NavParams,public http: HttpClient) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ListasPageUserPage');
+    this.todo = [];
+      this.http.get('http://80.211.5.206/index.php/getAllMembers/?id='+this.navParams.data[0].ID)
+          .subscribe(
+              res => {
+                    this.todo =res;
+                    for (let x = 0; x<this.todo.length; x++ ){
+                      if (this.todo[x].idUsuario === this.navParams.data[1]){
+                        this.all = this.todo[x];
+                        let index = this.todo.indexOf(this.todo[x], 0);
+                          if (index > -1) {
+                          this.todo.splice(index, 1);
+                      }
+                    }
+                    }                  
+              },
+              err => {
+                  console.log("Error",err);
+              }
+          );         
   }
-
+  inserta()
+  {
+    console.log(this.all);
+    console.log(this.message);
+  }
 }
