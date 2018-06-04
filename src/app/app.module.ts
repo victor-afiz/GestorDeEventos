@@ -18,7 +18,9 @@ import { AboutPage } from '../pages/about/about';
 import { PrivacyPolicyPage } from '../pages/privacy-policy/privacy-policy';
 import { VersionPage } from '../pages/version/version';
 import { ListasPage } from '../pages/listas/listas';
+import { ListasPageUserPage } from '../pages/listas-page-user/listas-page-user';
 import { ImagenesPage } from '../pages/imagenes/imagenes';
+import { UsersPage } from '../pages/users/users';
 import {ForActividadesComponent} from '../components/for-actividades/for-actividades';
 
 @NgModule({
@@ -36,7 +38,9 @@ import {ForActividadesComponent} from '../components/for-actividades/for-activid
     VersionPage,
     ForActividadesComponent,
       ListasPage,
-      ImagenesPage
+      ImagenesPage,
+      UsersPage,
+      ListasPageUserPage
   ],
   imports: [
     BrowserModule,
@@ -64,7 +68,9 @@ import {ForActividadesComponent} from '../components/for-actividades/for-activid
     VersionPage,
     ForActividadesComponent,
       ListasPage,
-      ImagenesPage
+      ImagenesPage,
+      UsersPage,
+      ListasPageUserPage
   ],
   providers: [
     StatusBar,

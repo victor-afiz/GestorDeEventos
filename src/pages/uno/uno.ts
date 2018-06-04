@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {HttpClient} from '@angular/common/http';
 import { ListasPage } from '../listas/listas';
 import { DomSanitizer } from '@angular/platform-browser';
+import { ListasPageUserPage } from '../listas-page-user/listas-page-user';
 
 /**
  * Generated class for the UnoPage page.
@@ -29,22 +30,13 @@ export class UnoPage {
 
 
   ionViewWillEnter()
-  {
-      this.todo = [];
-
-      this.http.get('http://80.211.5.206/index.php/getAllEvents/')
+  {  
+    this.todo = [];
+      this.http.get('http://80.211.5.206/index.php/getAllEvents/?id='+this.res)
           .subscribe(
               res => {
-                  if (res){
-                      this.all = res;
-                      for(let total of this.all){
-                          if (total.AdminID == this.navParams.data[1]){
-                              this.todo.push(total);
-                          }
-                      }
-                      this.text = this.todo;
-
-                  }
+                    this.all = res;
+                
               },
               err => {
                   console.log("Error",err);
@@ -57,7 +49,11 @@ export class UnoPage {
             object,
             this.res
         ];
-        this.navCtrl.push(ListasPage,array);
+        if (array[0].AdminID == this.res){
+            this.navCtrl.push(ListasPage,array);
+        }else{
+            this.navCtrl.push(ListasPageUserPage,array);
+        }
     }
 
 }

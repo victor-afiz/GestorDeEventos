@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { AlertController } from 'ionic-angular';
 import { ImagenesPage } from '../imagenes/imagenes';
+import { UsersPage } from '../users/users';
 
 @IonicPage()
 
@@ -17,16 +18,9 @@ export class CrearPage {
   unique_array: any = [];
   user: any = [];
   a: any = [];
-  all: any = [];
   text: any =[];
   myForm: FormGroup;
   imagen: any;
-  Images = [
-    'Playa',
-    'Bar',
-    'Restraurante',
-    'Museo'
-  ];
   imagenSeleccionada: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder: FormBuilder, public http: HttpClient, public alertCtrl: AlertController) {
@@ -44,23 +38,6 @@ export class CrearPage {
     });
   }
 
-  ionViewDidLoad() {
-    this.http.get('http://80.211.5.206/index.php/User/').subscribe(
-      res => {
-        if (res) {
-            this.all = res;
-            for (let i = 0; i<this.all.length; i++){
-              if (this.all[i].id != this.navParams.data[1]){
-                  this.text = this.all;
-              }
-            }
-        }
-      },
-      err => {
-        console.log("Error", err);
-      }
-    );
-  }
   protected adjustTextarea(event: any): void {
     let textarea: any = event.target;
     textarea.style.overflow = 'hidden';
@@ -69,6 +46,7 @@ export class CrearPage {
     return;
   }
   pickData() {
+    this.removeDuplicates(this.user);
     this.http.get('http://80.211.5.206/index.php/crearevento/?nombre=' + this.myForm.value.Nombre +
       '&descripcion=' + this.myForm.value.Descripción +
       '&fecha=' + this.myForm.value.fecha +
@@ -100,10 +78,6 @@ export class CrearPage {
       );
   }
 
-  push(id) {
-    this.user.push(id);
-    this.removeDuplicates(this.user);
-  }
 
   removeDuplicates(user) {
     for (let i = 0; i < user.length; i++) {
@@ -111,14 +85,21 @@ export class CrearPage {
         this.unique_array.push(user[i]);
       }
     }
+    console.log(this.unique_array);
   }
   pickImage()
   {
-       this.navCtrl.push(ImagenesPage);
+    this.navCtrl.push(ImagenesPage);
   }
-    ionViewWillEnter()
-    {
-      this.imagenSeleccionada = this.navParams.get('ruta')|| null;
-      console.log(this.imagenSeleccionada);
-    }
+
+  pickUsers()
+  {
+    this.navCtrl.push(UsersPage, this.res);
+  }
+
+  ionViewWillEnter()
+  {
+    this.user = this.navParams.get('array')|| null;
+    this.imagenSeleccionada = this.navParams.get('ruta')|| null;
+  }
 }

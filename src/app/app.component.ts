@@ -12,6 +12,8 @@ import { AboutPage } from '../pages/about/about';
 import { MenuPage } from '../pages/menu/menu';
 import { LoginPage } from '../pages/login/login';
 
+
+
 @Component({
   templateUrl: 'app.html'
 

@@ -1,0 +1,20 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Users</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+    <ion-list>
+        <ion-item *ngFor="let todo of all">
+          <ion-thumbnail item-start>
+              <ion-icon name="person"></ion-icon>
+          </ion-thumbnail>
+          <h2>{{todo.name}}</h2>
+          <p>{{todo.email}}</p>
+          <button id="blanco" ion-button clear item-end (click)="pintar(todo.id)">Añadir</button>
+        </ion-item>
+      </ion-list>
+</ion-content>
