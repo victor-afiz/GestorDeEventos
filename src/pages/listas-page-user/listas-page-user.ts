@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 
 /**
@@ -21,7 +21,7 @@ disabled: boolean = true;
 all : any = [];
 message : string;
 mensaje : string;
-  constructor(public navCtrl: NavController, public navParams: NavParams,public http: HttpClient) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public http: HttpClient, private alertCtrl: AlertController) {
   }
 
   ionViewDidLoad() {
@@ -56,5 +56,37 @@ mensaje : string;
                   console.log("Error",err);
               }
           ); 
+  }
+
+  elimina()
+  {
+    let alert = this.alertCtrl.create({
+      title: 'Confirmar delete',
+      message: '¿Seguro que quieres salir del evento?',
+      buttons: [
+        {
+          text: 'No',
+          role: 'No',
+          handler: () => {
+          }
+        },
+        {
+          text: 'Si',
+          handler: () => {
+              this.http.get('http://80.211.5.206/index.php/deleteMember/?idUser='+this.all.idUsuario+'&idEvent='+this.all.idEvento)
+              .subscribe(
+                  res => {
+                      this.navCtrl.pop();
+                  },
+                  err => {
+                      console.log("Error",err);
+                  }
+              ); 
+          }
+        }
+      ]
+    });
+    alert.present();
+    console.log(this.all);
   }
 }
