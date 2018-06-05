@@ -5,8 +5,48 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-item>
-    <ion-label color="primary" floating>Mensaje del Administrador</ion-label>
-    <ion-textarea type="text" disabled="{{disabled}}" (input)="adjustTextarea($event);"></ion-textarea>
-  </ion-item>
+    <ion-item>
+        <ion-input [disabled] = "true" value="{{this.navParams.data[0].Description}}" text-center></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary" floating>Mensaje del Administrador</ion-label>
+      <ion-textarea [(ngModel)]="Message" type="text" (input)="adjustTextarea($event);"></ion-textarea>
+    </ion-item>
+    <button ion-button block (click)="inserta()">Inserta Mensaje</button>
+    <ion-grid>
+      <ion-row>
+          <ion-col>
+    <ion-item >
+        <ion-label></ion-label>
+        <ion-input [(ngModel)] ="this.all.mensaje" placeholder ="Por insertar mensaje"></ion-input>
+    </ion-item>
+      </ion-col>
+      </ion-row>
+      <ion-row>
+          <ion-col>
+            <button ion-button block (click)="edita(all)"> <ion-icon name="add-circle"></ion-icon></button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    <div *ngFor="let text of todo">
+          <ion-row>
+            <ion-col>
+                <ion-item >
+                  <ion-label></ion-label>
+                  <ion-input placeholder ="Por insertar mensaje" [(ngModel)] ="text.mensaje"></ion-input>
+                </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <button ion-button block (click)="edita(text)"> <ion-icon name="add-circle"></ion-icon></button>
+                </ion-col>
+                <ion-col>
+                    <button ion-button block (click)="elimina(text)"><ion-icon name="trash"></ion-icon></button>
+                </ion-col>
+              </ion-row>
+        </ion-grid>
+    </div>
+    <button ion-button block (click)="delete()">Eliminar Evento</button>
 </ion-content>

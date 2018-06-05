@@ -14,7 +14,10 @@
 
 
 <ion-content padding>
-    <ion-input [disabled]="true" text-center value="{{this.navParams.data[0].Description}}"></ion-input>
+    <p text-center>Descripción del evento</p>
+    <ion-input [disabled]="true" value="{{this.navParams.data[0].Description}}"></ion-input>
+    <p text-center>Mensaje del Administrador</p>
+    <ion-input [disabled]="true" value="{{this.navParams.data[0].Message}}"></ion-input>
     <ion-item >
         <ion-label></ion-label>
         <ion-input disabled = "false" [(ngModel)]="message" placeholder ="Por insertar mensaje"></ion-input>
