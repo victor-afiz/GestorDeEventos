@@ -3,7 +3,6 @@ import { NavController } from 'ionic-angular';
 import { LoginPage } from '../login/login';
 import { AlertController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MenuPage } from '../menu/menu';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -41,12 +40,12 @@ export class HomePage {
     saveData() {
 
         if (this.myForm.value.passwordRetry.password === this.myForm.value.passwordRetry.passwordConfirmation){
-            //
-            this.http.post('http://localhost:8000/usuario/?name='+
+
+            this.http.get('http://80.211.5.206/index.php/usuario/?name='+
                 this.myForm.value.name+'&nickName='+
                 this.myForm.value.nickName+'&email='+
                 this.myForm.value.email+'&password='+
-                this.myForm.value.passwordRetry.password,"")
+                this.myForm.value.passwordRetry.password)
                 .subscribe(
                     res => {
                         console.log(res);
@@ -59,7 +58,7 @@ export class HomePage {
                           });
                           alert.present();
                         }else if (res[0] === 'nuevo'){
-                          this.navCtrl.push(MenuPage,res);
+                          this.navCtrl.push(LoginPage,res);
                         }
                     },
                     err => {
@@ -82,10 +81,8 @@ export class HomePage {
             alert.present();
         }
     }
-    login(res){
-
-    }
-    send() {
+    send()
+    {
         this.navCtrl.push(LoginPage);
     }
 }

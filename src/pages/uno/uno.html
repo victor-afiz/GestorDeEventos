@@ -1,5 +1,17 @@
 <ion-header>
+    <ion-navbar hideBackButton="true" text-center>
+        <p id="titulo">Bienvenido</p>
+        <button id="verde" ion-button [menuToggle]="mycontent">
+            <ion-icon name="menu"></ion-icon>
+        </button>
+    </ion-navbar>
 </ion-header>
-<ion-content padding class="card-background-page">    
-    <for-actividades></for-actividades>
+<ion-content padding class="card-background-page">
+    <div *ngFor="let todo of all">
+        <ion-card (click)="lista(todo)">
+            <img [src]=sanitizer.bypassSecurityTrustUrl(todo.Url)/>
+            <div class="card-title">{{todo.Name}}</div>
+            <div class="card-subtitle">{{todo.TotalMemebers}} Participantes</div>
+        </ion-card>  
+    </div>
 </ion-content>

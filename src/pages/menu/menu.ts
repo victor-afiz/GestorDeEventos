@@ -21,10 +21,9 @@ import { CrearPage } from '../crear/crear';
 export class MenuPage {
   tab1Root = UnoPage;
   tab2Root = CrearPage;
-
+  tabParams: any;
   constructor(public navCtrl: NavController, public navParams: NavParams,private alertCtrl: AlertController) {
-    
-   
+    this.tabParams = navParams.data;
   }
 
   ionViewDidLoad() {

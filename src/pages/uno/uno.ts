@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { AlertController } from 'ionic-angular';
 import {HttpClient} from '@angular/common/http';
+import { ListasPage } from '../listas/listas';
+import { DomSanitizer } from '@angular/platform-browser';
+import { ListasPageUserPage } from '../listas-page-user/listas-page-user';
 
 /**
  * Generated class for the UnoPage page.
@@ -16,24 +18,45 @@ import {HttpClient} from '@angular/common/http';
   templateUrl: 'uno.html',
 })
 export class UnoPage {
-  constructor(public navCtrl: NavController, public navParams: NavParams,public http: HttpClient,private alertCtrl: AlertController)
+  res: any;
+  text: string;
+  todo : any = [] ;
+  all : any = [] ;
+
+  constructor(public sanitizer:DomSanitizer, public navCtrl: NavController, public navParams: NavParams,public http: HttpClient)
   {
+    console.log(this.res = navParams.data[1]);
   }
 
-  getProductos(){
 
-
-    this.http.get('http://localhost:8000/usuario', {responseType: 'text'})
-      .subscribe(data => {   // data is a string
-        console.log(data);
-      });
-
+  ionViewWillEnter()
+  {  
+    this.todo = [];
+      this.http.get('http://80.211.5.206/index.php/getAllEvents/?id='+this.res)
+          .subscribe(
+              res => {
+                  if (null != res)
+                    this.all = res;
+                  
+              },
+              err => {
+                  
+                  console.log("Error",err);
+              }
+          );
   }
-
-  
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad UnoPage');
-  }
+    lista(object)
+    {
+        let array =[
+            object,
+            this.res
+        ];
+        if (array[0].AdminID == this.res){
+            this.navCtrl.push(ListasPage,array);
+        }else{
+            this.navCtrl.push(ListasPageUserPage,array);
+        }
+    }
 
 }
 

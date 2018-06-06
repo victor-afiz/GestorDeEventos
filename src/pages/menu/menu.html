@@ -1,18 +1,11 @@
 <ion-header>
 
-  <ion-navbar hideBackButton="true" text-center>
-    <p id="titulo">Bienvenido</p>
-    <button id="verde" ion-button [menuToggle]="mycontent">
-      <ion-icon name="menu"></ion-icon>
-    </button>
-  </ion-navbar>
-
 </ion-header>
 
 
 <ion-content padding>
   <ion-tabs color="dark">
-    <ion-tab [root]="tab1Root" tabTitle="Listas" tabIcon="clipboard"></ion-tab>
-    <ion-tab [root]="tab2Root" tabTitle="Crear" tabIcon="add-circle"></ion-tab>
+    <ion-tab [root]="tab1Root" tabTitle="Listas" tabIcon="clipboard" [rootParams]="tabParams" tabsHideOnSubPages="true"></ion-tab>
+    <ion-tab [root]="tab2Root" tabTitle="Crear" tabIcon="add-circle" [rootParams]="tabParams" tabsHideOnSubPages="true"></ion-tab>
   </ion-tabs>
 </ion-content>
