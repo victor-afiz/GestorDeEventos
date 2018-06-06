@@ -47,11 +47,11 @@ export class MyApp {
     this.menuCtrl.close();
   }
 
-  delete()
+  delete(id)
   {
     let alert = this.alertCtrl.create({
-      title: 'Eliminar Uusuario',
-      message: '¿Seguro que quieres eliminar tu usuario?',
+      title: 'Eliminar Cuenta',
+      message: '¿Seguro que quieres eliminar tu cuenta de usuario?',
       buttons: [
         {
           text: 'No',
@@ -63,7 +63,7 @@ export class MyApp {
           text: 'Si',
           handler: () => {
             console.log("entra");
-            console.log(this.NavParams);
+            console.log(id);
               /*this.http.get('http://80.211.5.206/index.php/deleteEvent/?idEvent='+this.eventoID)
               .subscribe(
                   res => {

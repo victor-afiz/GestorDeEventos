@@ -13,40 +13,46 @@
       <ion-textarea [(ngModel)]="Message" type="text" (input)="adjustTextarea($event);"></ion-textarea>
     </ion-item>
     <button ion-button block (click)="inserta()">Inserta Mensaje</button>
-    <ion-grid>
-      <ion-row>
-          <ion-col>
-    <ion-item >
-        <ion-label></ion-label>
-        <ion-input [(ngModel)] ="this.all.mensaje" placeholder ="Por insertar mensaje"></ion-input>
-    </ion-item>
-      </ion-col>
-      </ion-row>
-      <ion-row>
-          <ion-col>
-            <button ion-button block (click)="edita(all)"> <ion-icon name="add-circle"></ion-icon></button>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    <div *ngFor="let text of todo">
-          <ion-row>
+    <ion-card>
+        <ion-card-header>
+            {{this.all.nombreParticipante}}
+        </ion-card-header>
+        <ion-card-content>
+            <ion-input [(ngModel)] ="this.all.mensaje" placeholder ="Sin tu mensaje"></ion-input>            
+        </ion-card-content>
+        <ion-row>
             <ion-col>
-                <ion-item >
-                  <ion-label></ion-label>
-                  <ion-input placeholder ="Por insertar mensaje" [(ngModel)] ="text.mensaje"></ion-input>
-                </ion-item>
+                <button id="naranja" ion-button block (click)="edita(all)"> Editar Mensaje</button>
             </ion-col>
           </ion-row>
-          <ion-grid>
+      </ion-card>
+    <div *ngFor="let text of todo">
+        <ion-card>
+            <ion-card-header>
+                {{text.nombreParticipante}}     
+            </ion-card-header>
+            <ion-card-content>
+                <ion-grid>
+                    <ion-row>
+                      <ion-col col-10>
+                          <ion-input [disabled] ="true" placeholder ="{{text.nombreParticipante}} esta sin mensaje" [(ngModel)] ="text.mensaje"></ion-input> 
+                      </ion-col>
+                      <ion-col col-2>
+                          <ion-buttons end>
+                            <button id="rojo" ion-button (click)="editar(text)"> <ion-icon name="trash"></ion-icon></button> 
+                          </ion-buttons>
+                      </ion-col>
+                    </ion-row>
+                </ion-grid>             
+            </ion-card-content>
+            <ion-grid>
               <ion-row>
                 <ion-col>
-                  <button ion-button block (click)="edita(text)"> <ion-icon name="add-circle"></ion-icon></button>
+                    <button id="rojo" ion-button block (click)="elimina(text)">Eliminar Usuario</button>
                 </ion-col>
-                <ion-col>
-                    <button ion-button block (click)="elimina(text)"><ion-icon name="trash"></ion-icon></button>
-                </ion-col>
-              </ion-row>
-        </ion-grid>
+                </ion-row>
+            </ion-grid>              
+          </ion-card>
     </div>
     <button ion-button block (click)="delete()">Eliminar Evento</button>
 </ion-content>

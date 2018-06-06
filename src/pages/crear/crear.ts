@@ -46,36 +46,53 @@ export class CrearPage {
     return;
   }
   pickData() {
-    this.removeDuplicates(this.user);
-    this.http.get('http://80.211.5.206/index.php/crearevento/?nombre=' + this.myForm.value.Nombre +
-      '&descripcion=' + this.myForm.value.Descripción +
-      '&fecha=' + this.myForm.value.fecha +
-      '&url='+this.imagenSeleccionada +
-      '&totalPrice=' + this.myForm.value.total +
-      '&IdAdmin=' + this.res +
-      '&allUSer=' + this.unique_array + " ").subscribe(
-        res => {
-                let alert = this.alertCtrl.create({
-                    title: 'Exito',
-                    subTitle: 'Se creo el evento con exito',
-                    buttons: ['OK']
-                });
-                alert.present();
-                this.myForm.patchValue({Nombre: ""});
-                this.myForm.patchValue({Descripción: ""});
-                this.myForm.patchValue({fecha: ""});
-                this.myForm.patchValue({total: ""});
-
-                this.user = [];
-                this.unique_array = [];
-                this.imagenSeleccionada = "";
-
-        },
-        err => {
-          console.log(err);
-        }
-
-      );
+    if (null == this.user){
+      let alert = this.alertCtrl.create({
+        title: 'Sin Usuarios',
+        subTitle: 'No puedes crear un evento sin usuarios',
+        buttons: ['Ok']
+      });
+      alert.present();
+    }else if (null ==this.imagenSeleccionada ){
+      let alert = this.alertCtrl.create({
+        title: 'Sin imagen',
+        subTitle: 'No puedes crear un evento sin imagen',
+        buttons: ['Ok']
+      });
+      alert.present();
+    }else{
+      this.removeDuplicates(this.user);
+      this.http.get('http://80.211.5.206/index.php/crearevento/?nombre=' + this.myForm.value.Nombre +
+        '&descripcion=' + this.myForm.value.Descripción +
+        '&fecha=' + this.myForm.value.fecha +
+        '&url='+this.imagenSeleccionada +
+        '&totalPrice=' + this.myForm.value.total +
+        '&IdAdmin=' + this.res +
+        '&allUSer=' + this.unique_array + " ").subscribe(
+          res => {
+                  let alert = this.alertCtrl.create({
+                      title: 'Exito',
+                      subTitle: 'Se creo el evento con exito',
+                      buttons: ['OK']
+                  });
+                  alert.present();
+                  this.myForm.patchValue({Nombre: ""});
+                  this.myForm.patchValue({Descripción: ""});
+                  this.myForm.patchValue({fecha: ""});
+                  this.myForm.patchValue({total: ""});
+  
+                  this.user = [];
+                  this.unique_array = [];
+                  this.imagenSeleccionada = "";
+  
+          },
+          err => {
+            console.log(err);
+          }
+  
+        );
+    }
+   
   }
 
 

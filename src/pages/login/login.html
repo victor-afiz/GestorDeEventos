@@ -8,8 +8,6 @@
 </ion-header>
 
 <ion-content padding>
-
-
     <form [formGroup]="myForm" (ngSubmit)="find()">
         <ion-list>
           <ion-item>
@@ -22,11 +20,8 @@
               <ion-label stacked>Contraseña:</ion-label>
               <ion-input formControlName="password" type="password" placeholder="Contraseña"></ion-input>
             </ion-item>
-
         </ion-list>
-
       <button ion-button block type="submit" [disabled]="!myForm.valid">Iniciar Sesion</button>
-     
       </form>
       <div text-center>Si aun no tienes cuenta
         <a (click)="send()">Registrarse</a>

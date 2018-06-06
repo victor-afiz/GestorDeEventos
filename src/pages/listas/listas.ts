@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
+import { NgModuleLoader } from 'ionic-angular/util/ng-module-loader';
 
 /**
  * Generated class for the ListasPage page.
@@ -47,7 +48,6 @@ Message : string;
           .subscribe(
               res => {
                     this.todo =res;
-                    console.log(this.todo);
                     for (let x = 0; x<this.todo.length; x++ ){
                       if (this.todo[x].idUsuario === this.navParams.data[1]){
                         this.all = this.todo[x];
@@ -80,11 +80,24 @@ Message : string;
 
   edita(objeto)
   {
-      console.log(objeto);
     this.http.get('http://80.211.5.206/index.php/setMemberMessage/?idUser='+objeto.idUsuario+'&idEvent='+objeto.idEvento+'&message='+objeto.mensaje)
     .subscribe(
         res => {
                           
+        },
+        err => {
+            console.log("Error",err);
+        }
+    ); 
+
+  }
+
+  editar(objeto)
+  {
+    this.http.get('http://80.211.5.206/index.php/setMemberMessageNull/?idUser='+objeto.idUsuario+'&idEvent='+objeto.idEvento)
+    .subscribe(
+        res => {
+            this.cargaDatos();        
         },
         err => {
             console.log("Error",err);

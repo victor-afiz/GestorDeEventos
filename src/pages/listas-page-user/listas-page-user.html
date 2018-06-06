@@ -18,16 +18,32 @@
     <ion-input [disabled]="true" value="{{this.navParams.data[0].Description}}"></ion-input>
     <p text-center>Mensaje del Administrador</p>
     <ion-input [disabled]="true" value="{{this.navParams.data[0].Message}}"></ion-input>
-    <ion-item >
-        <ion-label></ion-label>
-        <ion-input disabled = "false" [(ngModel)]="message" placeholder ="Por insertar mensaje"></ion-input>
-    </ion-item>
-    <ion-item *ngFor="let text of todo">
-      <ion-label></ion-label>
-      <ion-input disabled = "true" value ="{{text.mensaje}}" placeholder ="Por insertar mensaje"></ion-input>
-    </ion-item>
+    <ion-card>
+        <ion-card-header>
+            {{this.nombre}}
+        </ion-card-header>
+        <ion-card-content>
+            <ion-input disabled = "false" [(ngModel)]="message" placeholder ="No insertaste ningun mensaje"></ion-input>
+        </ion-card-content>
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                  <button id="naranja" ion-button block (click)="inserta()">Insertar Datos</button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+      </ion-card>
+    <div *ngFor="let text of todo">
+      <ion-card>
+          <ion-card-header>
+              {{text.nombreParticipante}}
+          </ion-card-header>
+          <ion-card-content>
+              <ion-input disabled = "true" value ="{{text.mensaje}}" placeholder ="{{text.nombreParticipante}} esta sin mensaje"></ion-input>
+          </ion-card-content>
+        </ion-card>
+    </div>   
     <ion-fab right top #fab4>
         <button ion-fab color="dark" (click)="elimina()"><ion-icon name="exit"></ion-icon></button>
     </ion-fab>
-    <button ion-button block (click)="inserta()">Insertar Datos</button>
 </ion-content>

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { HttpClient } from '@angular/common/http';
@@ -23,7 +23,8 @@ export class LoginPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public formBuilder: FormBuilder,
-    public http: HttpClient
+    public http: HttpClient,
+    private alertCtrl: AlertController
     ){
       this.myForm = this.createMyForm();
   }
@@ -34,9 +35,7 @@ export class LoginPage {
 
     });
   }
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
-  }
+
   find(){
       this.http.get('http://80.211.5.206/index.php/login/?email='+this.myForm.value.email+'&password='+
           this.myForm.value.password)
@@ -45,6 +44,13 @@ export class LoginPage {
                   console.log(res);
                   if (res){
                     this.navCtrl.push(MenuPage, res)
+                  }else{
+                    let alert = this.alertCtrl.create({
+                      title: 'Fallo al iniciar sesión',
+                      subTitle: 'Contraseña o email invalidos',
+                      buttons: ['Ok']
+                    });
+                    alert.present();
                   }
               },
               err => {

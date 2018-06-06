@@ -20,6 +20,7 @@ todo : any = [];
 disabled: boolean = true;
 all : any = [];
 message : string;
+nombre : string;
 mensaje : string;
   constructor(public navCtrl: NavController, public navParams: NavParams,public http: HttpClient, private alertCtrl: AlertController) {
   }
@@ -28,11 +29,13 @@ mensaje : string;
       this.http.get('http://80.211.5.206/index.php/getAllMembers/?id='+this.navParams.data[0].ID)
           .subscribe(
               res => {
-                    this.todo =res;
+                    this.todo = res;
+                    console.log(this.todo);
                     for (let x = 0; x<this.todo.length; x++ ){
                       if (this.todo[x].idUsuario === this.navParams.data[1]){
                         this.all = this.todo[x];
                         this.message = this.all.mensaje;
+                        this.nombre = this.all.nombreParticipante;
                         let index = this.todo.indexOf(this.todo[x], 0);
                           if (index > -1) {
                           this.todo.splice(index, 1);
@@ -87,6 +90,5 @@ mensaje : string;
       ]
     });
     alert.present();
-    console.log(this.all);
   }
 }

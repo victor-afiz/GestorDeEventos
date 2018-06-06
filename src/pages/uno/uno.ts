@@ -35,10 +35,12 @@ export class UnoPage {
       this.http.get('http://80.211.5.206/index.php/getAllEvents/?id='+this.res)
           .subscribe(
               res => {
-                  this.all = res;
+                  if (null != res)
+                    this.all = res;
+                  
               },
               err => {
-                  this.all = [];
+                  
                   console.log("Error",err);
               }
           );
