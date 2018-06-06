@@ -36,6 +36,11 @@ Message : string;
 
   ionViewDidLoad()
   {
+        this.cargaDatos();
+  }
+
+  cargaDatos()
+  {
     this.Message = this.navParams.data[0].Message;
     this.todo = [];
       this.http.get('http://80.211.5.206/index.php/getAllMembers/?id='+this.navParams.data[0].ID)
@@ -57,8 +62,9 @@ Message : string;
               err => {
                   console.log("Error",err);
               }
-          );         
+          );  
   }
+
   inserta()
   {
     this.http.get('http://80.211.5.206/index.php/setEventMessage/?idEvent='+this.eventoID+'&message='+this.Message)
@@ -105,7 +111,7 @@ Message : string;
                 this.http.get('http://80.211.5.206/index.php/deleteMember/?idUser='+objeto.idUsuario+'&idEvent='+objeto.idEvento)
                 .subscribe(
                     res => {
-                        location.reload();
+                        this.cargaDatos();
                     },
                     err => {
                         console.log("Error",err);

@@ -1,5 +1,5 @@
 import { Component,ViewChild } from '@angular/core';
-import { Platform } from 'ionic-angular';
+import { Platform, NavParams } from 'ionic-angular';
 import { NavController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -11,6 +11,7 @@ import { VersionPage } from '../pages/version/version';
 import { AboutPage } from '../pages/about/about';
 import { MenuPage } from '../pages/menu/menu';
 import { LoginPage } from '../pages/login/login';
+import { HttpClient } from '@angular/common/http';
 
 
 
@@ -20,9 +21,10 @@ import { LoginPage } from '../pages/login/login';
 })
 export class MyApp {
   @ViewChild('mycontent') nav: NavController
+  @ViewChild('mycontent') NavParams: NavParams
   rootPage:any = LoginPage;
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public menuCtrl: MenuController, public alertCtrl: AlertController) {
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public menuCtrl: MenuController, public alertCtrl: AlertController, public http: HttpClient) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
@@ -43,6 +45,39 @@ export class MyApp {
   version(){
     this.nav.push(VersionPage);
     this.menuCtrl.close();
+  }
+
+  delete()
+  {
+    let alert = this.alertCtrl.create({
+      title: 'Eliminar Uusuario',
+      message: '¿Seguro que quieres eliminar tu usuario?',
+      buttons: [
+        {
+          text: 'No',
+          role: 'No',
+          handler: () => {
+          }
+        },
+        {
+          text: 'Si',
+          handler: () => {
+            console.log("entra");
+            console.log(this.NavParams);
+              /*this.http.get('http://80.211.5.206/index.php/deleteEvent/?idEvent='+this.eventoID)
+              .subscribe(
+                  res => {
+                      this.navCtrl.pop();      
+                  },
+                  err => {
+                      console.log("Error",err);
+                  }
+              ); */
+          }
+        }
+      ]
+    });
+    alert.present();
   }
 
   exit(){
