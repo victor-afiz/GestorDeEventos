@@ -6,7 +6,7 @@
         </button>
     </ion-navbar>
 </ion-header>
-<ion-content padding class="card-background-page">
+<ion-content padding class="card-background-page" id="uno">
     <div *ngFor="let todo of all">
         <ion-card (click)="lista(todo)">
             <img [src]=sanitizer.bypassSecurityTrustUrl(todo.Url)/>
