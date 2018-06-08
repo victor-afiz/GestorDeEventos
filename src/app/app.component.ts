@@ -21,7 +21,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class MyApp {
   @ViewChild('mycontent') nav: NavController
-  @ViewChild('mycontent') NavParams: NavParams
+
   rootPage:any = LoginPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public menuCtrl: MenuController, public alertCtrl: AlertController, public http: HttpClient) {
@@ -47,7 +47,7 @@ export class MyApp {
     this.menuCtrl.close();
   }
 
-  delete(id)
+  delete()
   {
     let alert = this.alertCtrl.create({
       title: 'Eliminar Cuenta',
@@ -62,17 +62,17 @@ export class MyApp {
         {
           text: 'Si',
           handler: () => {
-            console.log("entra");
-            console.log(id);
-              /*this.http.get('http://80.211.5.206/index.php/deleteEvent/?idEvent='+this.eventoID)
+            let session = sessionStorage.getItem('currentUser');
+              this.http.get('http://80.211.5.206/index.php/deleteUser/?id='+session+'')
               .subscribe(
                   res => {
-                      this.navCtrl.pop();      
+                    this.menuCtrl.close();
+                    this.nav.push(LoginPage);
                   },
                   err => {
                       console.log("Error",err);
                   }
-              ); */
+              );
           }
         }
       ]

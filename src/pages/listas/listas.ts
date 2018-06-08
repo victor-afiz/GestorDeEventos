@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
 import { HttpClient } from '@angular/common/http';
 import { NgModuleLoader } from 'ionic-angular/util/ng-module-loader';
 
+
 /**
  * Generated class for the ListasPage page.
  *
@@ -25,15 +26,9 @@ eventoID : string;
 Message : string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient,private alertCtrl: AlertController) {
-    
+
   }
-    protected adjustTextarea(event: any): void {
-        let textarea: any = event.target;
-        textarea.style.overflow = 'hidden';
-        textarea.style.height = 'auto';
-        textarea.style.height = textarea.scrollHeight + 'px';
-        return;
-    }
+
 
   ionViewDidLoad()
   {
@@ -70,7 +65,11 @@ Message : string;
     this.http.get('http://80.211.5.206/index.php/setEventMessage/?idEvent='+this.eventoID+'&message='+this.Message)
     .subscribe(
         res => {
-                         
+            let alert = this.alertCtrl.create({
+                subTitle: 'Insertaste un mensajes como administrador del evento',
+                buttons: ['Ok']
+              });
+              alert.present();         
         },
         err => {
             console.log("Error",err);
@@ -83,7 +82,11 @@ Message : string;
     this.http.get('http://80.211.5.206/index.php/setMemberMessage/?idUser='+objeto.idUsuario+'&idEvent='+objeto.idEvento+'&message='+objeto.mensaje)
     .subscribe(
         res => {
-                          
+            let alert = this.alertCtrl.create({
+                subTitle: 'Tu mensaje fue insertado correctamente',
+                buttons: ['Ok']
+              });
+              alert.present();            
         },
         err => {
             console.log("Error",err);
@@ -94,23 +97,48 @@ Message : string;
 
   editar(objeto)
   {
-    this.http.get('http://80.211.5.206/index.php/setMemberMessageNull/?idUser='+objeto.idUsuario+'&idEvent='+objeto.idEvento)
-    .subscribe(
-        res => {
-            this.cargaDatos();        
-        },
-        err => {
-            console.log("Error",err);
-        }
-    ); 
-
+      if (objeto.mensaje == null){
+        let alert = this.alertCtrl.create({
+            subTitle: 'El usuario '+ objeto.nombreParticipante +' no tienes mensaje en el evento',
+            buttons: ['Ok']
+          });
+          alert.present();   
+      }else{
+        let alert = this.alertCtrl.create({
+            title: 'Eliminar mensaje',
+            message: '¿Seguro que quieres borrar el mensaje de '+objeto.nombreParticipante +'?',
+            buttons: [
+              {
+                text: 'No',
+                role: 'No',
+                handler: () => {
+                }
+              },
+              {
+                text: 'Si',
+                handler: () => {
+                    this.http.get('http://80.211.5.206/index.php/setMemberMessageNull/?idUser='+objeto.idUsuario+'&idEvent='+objeto.idEvento)
+                        .subscribe(
+                            res => {
+                                this.cargaDatos();        
+                            },
+                            err => {
+                                console.log("Error",err);
+                            }
+                        ); 
+                }
+              }
+            ]
+          });
+          alert.present();
+      }
   }
 
   elimina(objeto)
   {
     let alert = this.alertCtrl.create({
-        title: 'Confirmar delete',
-        message: '¿Seguro que quieres eliminar este usuario?',
+        title: 'Eliminar usuario',
+        message: '¿Seguro que quieres eliminar a '+objeto.nombreParticipante+ ' del evento?',
         buttons: [
           {
             text: 'No',
@@ -161,6 +189,66 @@ Message : string;
                         console.log("Error",err);
                     }
                 ); 
+            }
+          }
+        ]
+      });
+      alert.present();
+  }
+
+  insert()
+  {
+    let alert = this.alertCtrl.create({
+        title: 'Insertar Usuario',
+        inputs: [
+          {
+            name: 'Nickname',
+            placeholder: 'Nickname'
+          }
+        ],
+        buttons: [
+          {
+            text: 'Cancelar',
+            role: 'Cancelar',
+            handler: data => {
+            }
+          },
+          {
+            text: 'Buscar',
+            handler: data => {
+              if (data.Nickname)
+              {
+                this.http.get('http://80.211.5.206/index.php/insertInToEvent/?nickname='+data.Nickname+'&idEvent='+this.eventoID+'')
+                .subscribe(
+                    res => {
+                        if (res[0] == 'usuario no encontrado'){
+                            let alert = this.alertCtrl.create({
+                                subTitle: 'usuario no encontrado',
+                                buttons: ['Ok']
+                              });
+                              alert.present();
+
+                        }else if (res[0] == 'Insertado'){
+                            let alert = this.alertCtrl.create({
+                                subTitle: 'usuario introducido correctamente',
+                                buttons: ['Ok']
+                              });
+                              alert.present();
+                            this.cargaDatos();
+
+                        }else if (res[0] == 'Este usuario ya pertenece a este evento'){
+                            let alert = this.alertCtrl.create({
+                                subTitle: 'Este usuario ya pertenece a este evento',
+                                buttons: ['Ok']
+                              });
+                              alert.present();
+                        }
+                    },
+                    err => {
+                        console.log("Error",err);
+                    }
+                );  
+              }
             }
           }
         ]

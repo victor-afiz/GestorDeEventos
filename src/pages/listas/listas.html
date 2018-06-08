@@ -1,12 +1,12 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>listas</ion-title>
+    <p id="titulo">Pagina Administrador</p>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding id="uno">
     <ion-item>
-        <ion-input [disabled] = "true" value="{{this.navParams.data[0].Description}}" text-center></ion-input>
+        <ion-textarea rows="5" [disabled] = "true" value="{{this.navParams.data[0].Description}}" text-center></ion-textarea>
     </ion-item>
     <ion-item>
       <ion-label color="primary" floating>Mensaje del Administrador</ion-label>
@@ -54,5 +54,6 @@
             </ion-grid>              
           </ion-card>
     </div>
+    <button ion-button block (click)="insert()">Inserta Nuevo Usuario</button>
     <button ion-button block (click)="delete()">Eliminar Evento</button>
 </ion-content>

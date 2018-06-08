@@ -48,17 +48,26 @@ export class HomePage {
                 this.myForm.value.passwordRetry.password)
                 .subscribe(
                     res => {
-                        console.log(res);
 
                         if(res[0] === 'existe'){
                           let alert = this.alertCtrl.create({
                             title: 'Correo en uso',
                             subTitle: 'Intentelo con otro',
-                            buttons: ['Registrar']
+                            buttons: ['Ok']
                           });
                           alert.present();
-                        }else if (res[0] === 'nuevo'){
-                          this.navCtrl.push(LoginPage,res);
+                          
+                        }else if(res[0] === 'NickName introducido ya esta en uso') {
+
+                            let alert = this.alertCtrl.create({
+                                title: 'Nickname en uso',
+                                subTitle: 'Intentelo con otro',
+                                buttons: ['Ok']
+                              });
+                              alert.present();
+
+                        }else if (res[0] == 'nuevo'){
+                            this.navCtrl.push(LoginPage,res);
                         }
                     },
                     err => {

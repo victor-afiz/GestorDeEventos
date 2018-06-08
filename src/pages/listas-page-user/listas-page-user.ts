@@ -53,7 +53,11 @@ mensaje : string;
     this.http.get('http://80.211.5.206/index.php/setMemberMessage/?idUser='+this.all.idUsuario+'&idEvent='+this.all.idEvento+'&message='+this.message)
           .subscribe(
               res => {
-                                 
+                let alert = this.alertCtrl.create({
+                  subTitle: 'Insertaste tu mensaje de forma correcta',
+                  buttons: ['Ok']
+                });
+                alert.present();               
               },
               err => {
                   console.log("Error",err);
@@ -64,7 +68,7 @@ mensaje : string;
   elimina()
   {
     let alert = this.alertCtrl.create({
-      title: 'Confirmar delete',
+      title: 'Abandonar evento',
       message: '¿Seguro que quieres salir del evento?',
       buttons: [
         {

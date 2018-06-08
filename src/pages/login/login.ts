@@ -61,5 +61,9 @@ export class LoginPage {
   send() {
     this.navCtrl.push(HomePage);
   }
+  ionViewWillEnter()
+  {
+    sessionStorage.removeItem('currentUser');
+  }
 
 }

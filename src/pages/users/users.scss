@@ -1,15 +1,26 @@
 page-users {
     #blanco{
         color :  black;
-        background-color: white ;
     }
     ion-icon{
         font-size: 80px;
+    }
+    ion-header ion-icon.back-button-icon.icon{
+        color:white;
     }
 
     #uno{
         background-image: url('../../assets/imgs/fondo.png');
     }
-
-
+    #titulo{
+        color: white!important;
+        float:right;
+        letter-spacing: 5px;
+        font-weight: 500;
+    }
+    
+    .item .item-content
+{
+	background-color: transparent !important;
+}
 }

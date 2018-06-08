@@ -25,6 +25,7 @@ export class UnoPage {
 
   constructor(public sanitizer:DomSanitizer, public navCtrl: NavController, public navParams: NavParams,public http: HttpClient)
   {
+    sessionStorage.setItem('currentUser', navParams.data[1] );
     console.log(this.res = navParams.data[1]);
   }
 
