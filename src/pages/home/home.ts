@@ -48,7 +48,7 @@ export class HomePage {
                 this.myForm.value.passwordRetry.password)
                 .subscribe(
                     res => {
-
+                        console.log(res);
                         if(res[0] === 'existe'){
                           let alert = this.alertCtrl.create({
                             title: 'Correo en uso',
