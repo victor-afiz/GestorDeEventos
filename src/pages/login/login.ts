@@ -41,20 +41,29 @@ export class LoginPage {
           this.myForm.value.password)
           .subscribe(
               res => {
-                  console.log(res);
-                  if (res){
-                    this.navCtrl.push(MenuPage, res)
-                  }else{
+                  console.log("tst",res[0]);
+
+                  if (res[0] == 500){
                     let alert = this.alertCtrl.create({
                       title: 'Fallo al iniciar sesión',
-                      subTitle: 'Contraseña o email invalidos',
+                      subTitle: 'Contraseña o email incorecto',
                       buttons: ['Ok']
                     });
                     alert.present();
                   }
+                  else if (res[0] == 501){
+                    let alert = this.alertCtrl.create({
+                      title: 'Fallo al iniciar sesión',
+                      subTitle: 'Usuario no encontrado',
+                      buttons: ['Ok']
+                    });
+                    alert.present();
+                  }else if (res[0] && res[1]){
+                    this.navCtrl.push(MenuPage, res)
+                }
               },
               err => {
-                  console.log(err);
+                  console.log("Error;",err);
               }
           );
   }
