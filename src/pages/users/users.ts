@@ -24,11 +24,11 @@ export class UsersPage {
   }
 
   ionViewDidLoad() {
-    
+    console.log(this.navParams.data);
     this.http.get('http://80.211.5.206/index.php/User/?id=' +this.navParams.data).subscribe(
       res => {
         if (res) {
-          this.all = res;  
+          this.all = res;
           this.all = this.all.map(function(x) {
             x.pintado = true;
             return x;
@@ -48,7 +48,7 @@ export class UsersPage {
       this.navCtrl.getPrevious().data.array = this.array;
     }else {
       objeto.pintado = true;
-      
+
       this.array = this.array.filter(function (e) {
         return e != objeto.id;
     });
@@ -56,7 +56,7 @@ export class UsersPage {
     }
     console.log(this.array);
 
-    
+
   }
 
 }

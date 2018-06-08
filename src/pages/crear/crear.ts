@@ -80,19 +80,19 @@ export class CrearPage {
                   this.myForm.patchValue({Descripción: ""});
                   this.myForm.patchValue({fecha: ""});
                   this.myForm.patchValue({total: ""});
-  
+
                   this.user = [];
                   this.unique_array = [];
                   this.imagenSeleccionada = "";
-  
+
           },
           err => {
             console.log(err);
           }
-  
+
         );
     }
-   
+
   }
 
 
@@ -111,6 +111,7 @@ export class CrearPage {
 
   pickUsers()
   {
+    console.log(this.res);
     this.navCtrl.push(UsersPage, this.res);
   }
 
