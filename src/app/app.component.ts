@@ -67,6 +67,8 @@ export class MyApp {
               this.http.get('http://80.211.5.206/index.php/deleteUser/?id='+session+'')
               .subscribe(
                   res => {
+                    this.storage.remove('nombre').then(() => {});
+                    this.storage.remove('id').then(() => {});
                     this.menuCtrl.close();
                     this.nav.push(LoginPage);
                   },
@@ -104,7 +106,6 @@ export class MyApp {
         {
           text: 'Si',
           handler: () => {
-            console.log("pase por aqui");
             this.storage.remove('nombre').then(() => {
 
             });
