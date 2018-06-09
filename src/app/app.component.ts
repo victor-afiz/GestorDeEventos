@@ -5,6 +5,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { MenuController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
 
 import { PrivacyPolicyPage } from '../pages/privacy-policy/privacy-policy';
 import { VersionPage } from '../pages/version/version';
@@ -24,7 +25,7 @@ export class MyApp {
 
   rootPage:any = LoginPage;
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public menuCtrl: MenuController, public alertCtrl: AlertController, public http: HttpClient) {
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public menuCtrl: MenuController,  public storage: Storage,public alertCtrl: AlertController, public http: HttpClient) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
@@ -96,6 +97,13 @@ export class MyApp {
         {
           text: 'Si',
           handler: () => {
+            console.log("pase por aqui");
+            this.storage.remove('nombre').then(() => {
+
+            });
+            this.storage.remove('id').then(() => {
+
+            });
             this.nav.push(LoginPage);
             this.menuCtrl.close();
           }

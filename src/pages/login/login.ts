@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Storage } from '@ionic/storage';
 
 import { HttpClient } from '@angular/common/http';
 import { HomePage } from '../home/home';
@@ -24,9 +25,24 @@ export class LoginPage {
     public navParams: NavParams,
     public formBuilder: FormBuilder,
     public http: HttpClient,
-    private alertCtrl: AlertController
+    private alertCtrl: AlertController,
+    public storage: Storage
     ){
       this.myForm = this.createMyForm();
+    storage.get('nombre').then((nombre) => {
+
+      if (nombre === null){
+
+      }else{
+        storage.get('id').then((id) => {
+          let res = []
+          res[0] = nombre;
+          res[1] = id;
+          this.navCtrl.push(MenuPage, res)
+        });
+      }
+    });
+
   }
   private createMyForm(){
     return this.formBuilder.group({
@@ -59,6 +75,8 @@ export class LoginPage {
                     });
                     alert.present();
                   }else if (res[0] && res[1]){
+                    this.storage.set('nombre', res[0]);
+                    this.storage.set('id', res[1]);
                     this.navCtrl.push(MenuPage, res)
                 }
               },
