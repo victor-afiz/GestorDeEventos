@@ -90,8 +90,15 @@ export class MyApp {
           text: 'No',
           role: 'cancel',
           handler: () => {
-            this.nav.push(MenuPage);
-            this.menuCtrl.close();
+            this.storage.get('nombre').then((nombre) => {
+              this.storage.get('id').then((id) => {
+                let res = []
+                res[0] = nombre;
+                res[1] = id;
+                this.nav.push(MenuPage,res);
+                this.menuCtrl.close();
+              });
+            });
           }
         },
         {
