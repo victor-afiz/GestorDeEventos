@@ -22,6 +22,8 @@ export class CrearPage {
   myForm: FormGroup;
   imagen: any;
   imagenSeleccionada: any;
+  fecha: any;
+  resultado: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder: FormBuilder, public http: HttpClient, public alertCtrl: AlertController) {
     this.res = navParams.data[1];
@@ -46,16 +48,16 @@ export class CrearPage {
     return;
   }
   pickData() {
+    this.fecha = this.myForm.value.fecha.split('-');
+    this.resultado = this.fecha[2]+"/"+this.fecha[1]+"/"+this.fecha[0];
     if (null == this.user){
       let alert = this.alertCtrl.create({
-        title: 'Sin Usuarios',
         subTitle: 'No puedes crear un evento sin usuarios',
         buttons: ['Ok']
       });
       alert.present();
     }else if (null ==this.imagenSeleccionada ){
       let alert = this.alertCtrl.create({
-        title: 'Sin imagen',
         subTitle: 'No puedes crear un evento sin imagen',
         buttons: ['Ok']
       });
@@ -64,15 +66,14 @@ export class CrearPage {
       this.removeDuplicates(this.user);
       this.http.get('http://80.211.5.206/index.php/crearevento/?nombre=' + this.myForm.value.Nombre +
         '&descripcion=' + this.myForm.value.Descripción +
-        '&fecha=' + this.myForm.value.fecha +
+        '&fecha=' + this.resultado +
         '&url='+this.imagenSeleccionada +
         '&totalPrice=' + this.myForm.value.total +
         '&IdAdmin=' + this.res +
         '&allUSer=' + this.unique_array + " ").subscribe(
           res => {
                   let alert = this.alertCtrl.create({
-                      title: 'Exito',
-                      subTitle: 'Se creo el evento con exito',
+                      subTitle: 'Se creó el evento con éxito',
                       buttons: ['OK']
                   });
                   alert.present();

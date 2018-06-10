@@ -14,4 +14,16 @@ page-version {
   #uno{
     background-image: url('../../assets/imgs/fondo.png');
   }
+  #centrado{
+    position: absolute;
+    left: 50%;
+    top: 30%;
+    transform: translate(-50%, -30%);
+  }
+  #bold{
+      font-weight: bold;
+  }
+  img{
+      margin-left: 20%;
+  }
 }

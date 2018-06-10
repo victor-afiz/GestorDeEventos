@@ -13,17 +13,17 @@
       <ion-list>
         <ion-item>
           <ion-icon name="contact" item-start></ion-icon>
-          <ion-label stacked>Nombres:</ion-label>
+          <ion-label stacked>Nombre:</ion-label>
           <ion-input formControlName="name" type="text" placeholder="Nombre"></ion-input>
         </ion-item>
         <ion-item>
           <ion-icon name="contact" item-start></ion-icon>
           <ion-label stacked>NickName:</ion-label>
-          <ion-input formControlName="nickName" type="text" placeholder="Nick name"></ion-input>
+          <ion-input formControlName="nickName" type="text" placeholder="Nickname"></ion-input>
         </ion-item>
         <ion-item>
           <ion-icon name="mail" item-start></ion-icon>
-          <ion-label stacked>Correo electronico:</ion-label>
+          <ion-label stacked>Correo electrónico:</ion-label>
           <ion-input formControlName="email" type="email" placeholder="Email"></ion-input>
         </ion-item>
         <div formGroupName="passwordRetry">
@@ -43,7 +43,7 @@
         <button ion-button block type="submit" [disabled]="!myForm.valid">Guardar</button>
       </div>
     </form>
-    <div text-center>Si ya tienes cuenta
+    <div text-center>Si ya tienes cuenta haz
       <a (click)="send()">Login</a>
   </div>
 

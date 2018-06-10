@@ -52,7 +52,7 @@ export class HomePage {
                         if(res[0] === 'existe'){
                           let alert = this.alertCtrl.create({
                             title: 'Correo en uso',
-                            subTitle: 'Intentelo con otro',
+                            subTitle: 'Inténtelo con otro',
                             buttons: ['Ok']
                           });
                           alert.present();
@@ -61,7 +61,7 @@ export class HomePage {
 
                             let alert = this.alertCtrl.create({
                                 title: 'Nickname en uso',
-                                subTitle: 'Intentelo con otro',
+                                subTitle: 'Inténtelo con otro',
                                 buttons: ['Ok']
                               });
                               alert.present();
@@ -74,7 +74,7 @@ export class HomePage {
                         console.log(err);
                       let alert = this.alertCtrl.create({
                         title: 'Server error',
-                        subTitle: 'Intentelo mas tarde',
+                        subTitle: 'Inténtelo mas tarde',
                         buttons: ['Retry']
                       });
                       alert.present();
@@ -83,9 +83,8 @@ export class HomePage {
                 );
         } else {
             let alert = this.alertCtrl.create({
-                title: 'Wrong password',
-                subTitle: 'Please retry the login and try again',
-                buttons: ['Retry']
+                subTitle: 'Las contraseñas no so iguales',
+                buttons: ['Reintentar']
             });
             alert.present();
         }

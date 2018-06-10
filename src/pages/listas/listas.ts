@@ -66,7 +66,7 @@ Message : string;
     .subscribe(
         res => {
             let alert = this.alertCtrl.create({
-                subTitle: 'Insertaste un mensajes como administrador del evento',
+                subTitle: 'Insertaste un mensaje como administrador del evento',
                 buttons: ['Ok']
               });
               alert.present();         
@@ -99,7 +99,7 @@ Message : string;
   {
       if (objeto.mensaje == null){
         let alert = this.alertCtrl.create({
-            subTitle: 'El usuario '+ objeto.nombreParticipante +' no tienes mensaje en el evento',
+            subTitle: 'El usuario '+ objeto.nombreParticipante +' no tiene mensajes en el evento',
             buttons: ['Ok']
           });
           alert.present();   
@@ -168,7 +168,7 @@ Message : string;
   delete()
   {
     let alert = this.alertCtrl.create({
-        title: 'Confirmar delete',
+        title: 'Confirmar borrado',
         message: '¿Seguro que quieres eliminar este evento?',
         buttons: [
           {

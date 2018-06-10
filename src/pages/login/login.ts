@@ -62,7 +62,7 @@ export class LoginPage {
                   if (res[0] == 500){
                     let alert = this.alertCtrl.create({
                       title: 'Fallo al iniciar sesión',
-                      subTitle: 'Contraseña o email incorecto',
+                      subTitle: 'Contraseña incorecta',
                       buttons: ['Ok']
                     });
                     alert.present();
