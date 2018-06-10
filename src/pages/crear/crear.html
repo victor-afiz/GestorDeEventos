@@ -28,11 +28,11 @@
         </ion-row>
         <ion-row >
           <ion-col>
-            <ion-item>
+            <ion-item class="date">
                 <ion-label>Date</ion-label>
-                <ion-datetime min="2018" max="2020-10-31" formControlName="fecha" displayFormat="MM/YYYY" pickerFormat="DD-MMMM-YYYY"></ion-datetime>
+                <ion-datetime  min="2018" max="2020-10-31" formControlName="fecha" displayFormat="DD-MMMM-YYYY" placeholder="DD-MMMM-YYYY" pickerFormat="DD-MMMM-YYYY"></ion-datetime>
             </ion-item>
-          </ion-col>  
+          </ion-col>
         </ion-row>
         <ion-row>
           <ion-col>
@@ -40,7 +40,7 @@
           </ion-col>
           <ion-col>
             <button ion-button block (click)="pickUsers()">Usuarios</button>
-          </ion-col>  
+          </ion-col>
         </ion-row>
       </ion-grid>
     </ion-list>
