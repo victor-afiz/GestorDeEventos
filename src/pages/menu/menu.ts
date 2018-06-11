@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { AlertController } from 'ionic-angular';
 
-import { HomePage } from '../home/home';
 import { UnoPage } from '../uno/uno';
 import { CrearPage } from '../crear/crear';
 
@@ -22,7 +20,7 @@ export class MenuPage {
   tab1Root = UnoPage;
   tab2Root = CrearPage;
   tabParams: any;
-  constructor(public navCtrl: NavController, public navParams: NavParams,private alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.tabParams = navParams.data;
   }
 

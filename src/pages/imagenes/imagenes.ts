@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { CrearPage} from '../crear/crear';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 /**

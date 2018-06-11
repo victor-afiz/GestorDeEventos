@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
-import { NgModuleLoader } from 'ionic-angular/util/ng-module-loader';
-
 
 /**
  * Generated class for the ListasPage page.

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {HttpClient} from '@angular/common/http';
 /**
  * Generated class for the UsersPage page.
@@ -19,7 +19,7 @@ export class UsersPage {
   array : any = [];
   id : any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public http: HttpClient, private alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public http: HttpClient) {
     this.myColor = {'background-color': "#ff9900"};
   }
 
