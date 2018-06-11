@@ -29,6 +29,13 @@ Message : string;
 
   }
 
+  protected adjustTextarea(event: any): void {
+    let textarea: any = event.target;
+    textarea.style.overflow = 'hidden';
+    textarea.style.height = 'auto';
+    textarea.style.height = textarea.scrollHeight + 'px';
+    return;
+  }
 
   ionViewDidLoad()
   {
